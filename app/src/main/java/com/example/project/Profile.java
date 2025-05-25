@@ -72,18 +72,18 @@ public class Profile extends AppCompatActivity {
         Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/b8d8288b-82c8-431d-8fcc-7167877e6964").into(settingsArrow);
 
         // Example: setOnClickListener
-        View heightLayout = findViewById(R.id.r3xqj1qed7x3);
+        View heightLayout = findViewById(R.id.Height);
         heightLayout.setOnClickListener(v -> {
             // Do something
             System.out.println("Height clicked");
         });
 
-        View weightLayout = findViewById(R.id.rx0zqrt198sb);
+        View weightLayout = findViewById(R.id.Weight);
         weightLayout.setOnClickListener(v -> {
             System.out.println("Weight clicked");
         });
 
-        View ageLayout = findViewById(R.id.ryl1cgabo7ls);
+        View ageLayout = findViewById(R.id.Age);
         ageLayout.setOnClickListener(v -> {
             System.out.println("Age clicked");
         });
