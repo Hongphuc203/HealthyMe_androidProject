@@ -25,23 +25,25 @@
 				android:layout_marginBottom="35dp"
 				android:layout_marginHorizontal="30dp"
 				android:orientation="horizontal">
+
 				<LinearLayout
 					android:id="@+id/rc8ozhtr6wg"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:background="@drawable/cr8bf7f8f8"
-					android:paddingVertical="11dp"
-					android:paddingHorizontal="13dp"
 					android:clickable="true"
 					android:focusable="true"
-					android:orientation="vertical">
+					android:orientation="vertical"
+					android:paddingHorizontal="13dp"
+					android:paddingVertical="11dp"
+					tools:ignore="TouchTargetSizeCheck">
+
 					<com.google.android.material.imageview.ShapeableImageView
 						android:id="@+id/rxqq26ubv85g"
 						android:layout_width="4dp"
 						android:layout_height="9dp"
-						android:src="@mipmap/ic_launcher"
 						android:scaleType="fitXY"
-					/>
+						android:src="@mipmap/ic_launcher" />
 				</LinearLayout>
 				<View
 					android:layout_width="0dp"
@@ -62,34 +64,36 @@
 					android:layout_height="0dp"
 					android:layout_weight="1"
 				 />
+
 				<LinearLayout
 					android:id="@+id/ru9lw1e90rxh"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:background="@drawable/cr8bf7f8f8"
-					android:paddingVertical="14dp"
-					android:paddingHorizontal="11dp"
 					android:clickable="true"
 					android:focusable="true"
-					android:orientation="vertical">
+					android:orientation="vertical"
+					android:paddingHorizontal="11dp"
+					android:paddingVertical="14dp"
+					tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
+
 					<com.google.android.material.imageview.ShapeableImageView
 						android:id="@+id/r79k1xoiwzrb"
 						android:layout_width="10dp"
 						android:layout_height="4dp"
-						android:src="@mipmap/ic_launcher"
 						android:scaleType="fitXY"
-					/>
+						android:src="@mipmap/ic_launcher" />
 				</LinearLayout>
 			</LinearLayout>
+
 			<LinearLayout
-				android:id="@+id/rb54db8zesfk"
+				android:id="@+id/InformationUser"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:paddingVertical="3dp"
-				android:layout_marginBottom="30dp"
 				android:layout_marginHorizontal="30dp"
-				android:background="@android:color/white"
-				android:orientation="vertical">
+				android:layout_marginBottom="30dp"
+				android:orientation="vertical"
+				android:paddingVertical="3dp">
 
 				<LinearLayout
 					android:id="@+id/rcz6dig3ppfh"
@@ -162,18 +166,18 @@
 					android:id="@+id/rlxxf08mo628"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:background="@android:color/white"
+					android:paddingBottom="10dp"
+					android:paddingTop="10dp"
 					android:orientation="horizontal">
 
 					<LinearLayout
-						android:id="@+id/r3xqj1qed7x3"
+						android:id="@+id/Height"
 						android:layout_width="0dp"
 						android:layout_height="wrap_content"
 						android:layout_marginEnd="15dp"
 						android:layout_weight="1"
 						android:background="@drawable/cr16bffffff"
 						android:clickable="true"
-						android:elevation="40dp"
 						android:focusable="true"
 						android:gravity="center_horizontal"
 						android:orientation="vertical"
@@ -200,14 +204,13 @@
 					</LinearLayout>
 
 					<LinearLayout
-						android:id="@+id/rx0zqrt198sb"
+						android:id="@+id/Weight"
 						android:layout_width="0dp"
 						android:layout_height="wrap_content"
 						android:layout_marginEnd="15dp"
 						android:layout_weight="1"
 						android:background="@drawable/cr16bffffff"
 						android:clickable="true"
-						android:elevation="40dp"
 						android:focusable="true"
 						android:gravity="center_horizontal"
 						android:orientation="vertical"
@@ -234,13 +237,12 @@
 					</LinearLayout>
 
 					<LinearLayout
-						android:id="@+id/ryl1cgabo7ls"
+						android:id="@+id/Age"
 						android:layout_width="0dp"
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
 						android:background="@drawable/cr16bffffff"
 						android:clickable="true"
-						android:elevation="40dp"
 						android:focusable="true"
 						android:gravity="center_horizontal"
 						android:orientation="vertical"
@@ -268,14 +270,14 @@
 				</LinearLayout>
 			</LinearLayout>
 			<LinearLayout
-				android:id="@+id/r1v1lz8elwp4"
+				android:id="@+id/Account"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:background="@drawable/cr16bffffff"
+				android:elevation="40dp"
 				android:paddingVertical="20dp"
 				android:layout_marginBottom="15dp"
 				android:layout_marginHorizontal="30dp"
-				android:elevation="40dp"
 				android:orientation="vertical">
 				<TextView
 					android:id="@+id/rsycum0n7n1"
@@ -465,14 +467,14 @@
 				</LinearLayout>
 			</LinearLayout>
 			<LinearLayout
-				android:id="@+id/roamyegdpjbq"
+				android:id="@+id/Notification"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:background="@drawable/cr16bffffff"
+				android:elevation="40dp"
 				android:paddingVertical="20dp"
 				android:layout_marginBottom="15dp"
 				android:layout_marginHorizontal="30dp"
-				android:elevation="40dp"
 				android:orientation="vertical">
 				<TextView
 					android:id="@+id/rgt47o70l2kl"
@@ -523,7 +525,7 @@
 			</LinearLayout>
 			<LinearLayout
 				android:paddingVertical="20dp"
-				android:id="@+id/rglweq3gkglp"
+				android:id="@+id/Other"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="63dp"
