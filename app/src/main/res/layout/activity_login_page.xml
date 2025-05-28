@@ -52,7 +52,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center_horizontal"
-				android:layout_marginBottom="285dp"
+				android:layout_marginBottom="180dp"
 				android:orientation="vertical">
 				<LinearLayout
 					android:id="@+id/r7xcaf69jl7a"
@@ -66,7 +66,7 @@
 					android:layout_marginBottom="15dp"
 					android:orientation="horizontal">
 					<ImageView
-						android:id="@+id/rm9gx8tna7qr"
+						android:id="@+id/img1"
 						android:layout_width="15dp"
 						android:layout_height="13dp"
 						android:layout_marginVertical="2dp"
@@ -79,64 +79,70 @@
 						android:inputType="text"
 						android:hint="Email"
 						android:background="@null"
-						android:id="@+id/ryujd5w5degp"
-						android:textColor="#ACA3A5"
+						android:id="@+id/edtEmail"
+						android:textColor="@color/black"
 						android:textSize="12sp"
 						android:layout_width="0dp"
 						android:layout_height="30dp"
 						android:layout_weight="1"
 						/>
 				</LinearLayout>
+
 				<LinearLayout
 					android:id="@+id/riyto5hxdpz"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:background="@drawable/sf7f8f8sw1cr14bf7f8f8"
-					android:padding="15dp"
+					android:layout_height="70dp"
 					android:layout_marginBottom="10dp"
-					android:orientation="horizontal">
+					android:background="@drawable/sf7f8f8sw1cr14bf7f8f8"
+					android:orientation="horizontal"
+					android:padding="15dp">
+
 					<LinearLayout
 						android:id="@+id/raic3fny61q7"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:paddingRight="3dp"
-						android:orientation="horizontal">
+						android:orientation="horizontal"
+						android:paddingRight="3dp">
+
 						<ImageView
-							android:id="@+id/ridf6rzh4fx"
+							android:id="@+id/img2"
 							android:layout_width="11dp"
 							android:layout_height="13dp"
 							android:layout_marginVertical="2dp"
 							android:layout_marginStart="3dp"
 							android:layout_marginEnd="13dp"
-							android:src="@mipmap/ic_launcher"
 							android:scaleType="fitXY"
-							/>
-						<TextView
-							android:id="@+id/rnn9ey021lyb"
-							android:textColor="#ACA3A5"
-							android:textSize="12sp"
+							android:src="@mipmap/ic_launcher" />
+
+						<EditText
+							android:id="@+id/edtPassword"
+							android:layout_width="203dp"
 							android:layout_height="30dp"
-							android:layout_width="wrap_content"
-							android:text="Password"
-							/>
+							android:layout_weight="1"
+							android:background="@null"
+							android:hint="Password"
+							android:inputType="textPassword"
+							android:textColor="@color/black"
+							android:textSize="12sp" />
 					</LinearLayout>
+
 					<View
 						android:layout_width="0dp"
 						android:layout_height="0dp"
-						android:layout_weight="1"
-						/>
+						android:layout_weight="1" />
+
 					<ImageView
-						android:id="@+id/rf7w61n68etu"
+						android:id="@+id/img3"
 						android:layout_width="13dp"
 						android:layout_height="11dp"
-						android:layout_marginVertical="3dp"
 						android:layout_marginHorizontal="2dp"
-						android:src="@mipmap/ic_launcher"
+						android:layout_marginVertical="3dp"
 						android:scaleType="fitXY"
-						/>
+						android:src="@drawable/visibility_off" />
 				</LinearLayout>
+
 				<TextView
-					android:id="@+id/rqa66oztsoqh"
+					android:id="@+id/forgotPassword"
 					android:textColor="#ACA3A5"
 					android:textSize="12sp"
 					android:textStyle="bold"
@@ -146,44 +152,47 @@
 					android:text="Forgot your password?"
 					/>
 			</LinearLayout>
+
 			<LinearLayout
-				android:id="@+id/rriou8zz9xb"
+				android:id="@+id/btnLogin"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:gravity="center_horizontal"
-				android:background="@drawable/cr99lr495cc8fed6b50f6"
-				android:paddingVertical="18dp"
 				android:layout_marginBottom="20dp"
+				android:background="@drawable/cr99lr495cc8fed6b50f6"
 				android:clickable="true"
 				android:focusable="true"
-				android:orientation="vertical">
+				android:gravity="center_horizontal"
+				android:orientation="vertical"
+				android:paddingVertical="18dp">
+
 				<LinearLayout
 					android:id="@+id/r9epkkr5jvwq"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:paddingRight="3dp"
-					android:orientation="horizontal">
+					android:orientation="horizontal"
+					android:paddingRight="3dp">
+
 					<ImageView
-						android:id="@+id/ri63vs72r6vl"
+						android:id="@+id/img4"
 						android:layout_width="19dp"
 						android:layout_height="20dp"
 						android:layout_marginVertical="2dp"
 						android:layout_marginStart="2dp"
 						android:layout_marginEnd="12dp"
-						android:src="@mipmap/ic_launcher"
 						android:scaleType="fitXY"
-						/>
+						android:src="@mipmap/ic_launcher" />
+
 					<TextView
 						android:id="@+id/rn6eyewu9i5j"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Login"
 						android:textColor="#FFFFFF"
 						android:textSize="16sp"
-						android:textStyle="bold"
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:text="Login"
-						/>
+						android:textStyle="bold" />
 				</LinearLayout>
 			</LinearLayout>
+
 			<LinearLayout
 				android:id="@+id/rd6bcm3xexl9"
 				android:layout_width="match_parent"
@@ -192,7 +201,7 @@
 				android:layout_marginBottom="20dp"
 				android:orientation="horizontal">
 				<ImageView
-					android:id="@+id/rdpbxnncp84m"
+					android:id="@+id/img5"
 					android:layout_width="141dp"
 					android:layout_height="1dp"
 					android:src="@mipmap/ic_launcher"
@@ -217,7 +226,7 @@
 					android:layout_weight="1"
 					/>
 				<ImageView
-					android:id="@+id/rlsujbrsp6y"
+					android:id="@+id/img6"
 					android:layout_width="140dp"
 					android:layout_height="1dp"
 					android:src="@mipmap/ic_launcher"
@@ -225,15 +234,15 @@
 					/>
 			</LinearLayout>
 			<LinearLayout
-				android:id="@+id/r9zp3bs988m8"
+				android:id="@+id/login3"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="30dp"
 				android:orientation="horizontal">
 
 				<LinearLayout
-					android:id="@+id/rwt2nem0tk7"
-					android:layout_width="wrap_content"
+					android:id="@+id/btnLoginGG"
+					android:layout_width="49dp"
 					android:layout_height="wrap_content"
 					android:layout_marginEnd="30dp"
 					android:background="@drawable/sddd9dasw1cr14"
@@ -244,34 +253,16 @@
 					tools:ignore="SpeakableTextPresentCheck">
 
 					<com.google.android.material.imageview.ShapeableImageView
-						android:id="@+id/r82m4wguhbh"
+						android:id="@+id/img7"
 						android:layout_width="20dp"
-						android:layout_height="20dp"
+						android:layout_height="21dp"
 						android:scaleType="fitXY"
 						android:src="@mipmap/ic_launcher" />
 				</LinearLayout>
 
-				<LinearLayout
-					android:id="@+id/rmfd4wcx9iu"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:background="@drawable/sddd9dasw1cr14"
-					android:clickable="true"
-					android:focusable="true"
-					android:orientation="vertical"
-					android:padding="15dp"
-					tools:ignore="SpeakableTextPresentCheck">
-
-					<com.google.android.material.imageview.ShapeableImageView
-						android:id="@+id/r0093rj4wtn8zb"
-						android:layout_width="20dp"
-						android:layout_height="20dp"
-						android:scaleType="fitXY"
-						android:src="@mipmap/ic_launcher" />
-				</LinearLayout>
 			</LinearLayout>
 			<TextView
-				android:id="@+id/ra4o77up0cft"
+				android:id="@+id/txtRegister"
 				android:textColor="#1D1517"
 				android:textSize="14sp"
 				android:layout_marginBottom="41dp"
