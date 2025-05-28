@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LoseAFat"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/cr22lr495c050f6eea4ce"
+    android:paddingTop="45dp"
+    android:paddingBottom="31dp"
+    android:elevation="22dp"
+    android:gravity="center_horizontal">
+
+    <!-- Hình ảnh chính -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivLoseFat"
+        android:layout_width="229dp"
+        android:layout_height="264dp"
+        android:layout_marginBottom="41dp"
+        android:layout_marginHorizontal="22dp"
+        android:background="@drawable/img"
+        android:scaleType="fitXY"
+         />
+
+    <!-- Tiêu đề -->
+    <TextView
+        android:id="@+id/tvLoseFatTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Lose a Fat"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <!-- Gạch phân cách -->
+    <View
+        android:layout_width="50dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="19dp"
+        android:background="#F7F8F8" />
+
+    <!-- Mô tả -->
+    <TextView
+        android:id="@+id/tvLoseFatDesc"
+        android:layout_width="202dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="I have over 20 lbs to lose. I want to drop all this fat and gain muscle mass"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp" />
+</LinearLayout>

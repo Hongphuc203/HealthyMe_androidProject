@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:background="@drawable/cr22lr495c050f6eea4ce"
+	android:elevation="22dp"
+	android:paddingHorizontal="30dp"
+	android:paddingVertical="35dp"
+	android:gravity="center_horizontal">
+
+	<!-- Hình ảnh chính -->
+	<com.google.android.material.imageview.ShapeableImageView
+		android:id="@+id/ImgLeanTone"
+		android:layout_width="183dp"
+		android:layout_height="290dp"
+		android:layout_marginBottom="25dp"
+		android:background="@drawable/improveshape"
+		android:scaleType="fitXY"
+		 />
+
+	<!-- Tiêu đề -->
+	<TextView
+		android:id="@+id/tvGoalTitle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="4dp"
+		android:text="Improve Shape"
+		android:textColor="#FFFFFF"
+		android:textSize="14sp"
+		android:textStyle="bold" />
+
+	<!-- Mô tả -->
+	<TextView
+		android:id="@+id/tvGoalDesc"
+		android:layout_width="214dp"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:text="I have a low amount of body fat and need / want to build more muscle"
+		android:textColor="#FFFFFF"
+		android:textSize="12sp" />
+</LinearLayout>
