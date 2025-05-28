@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.example.project.R; // Đảm bảo đúng package
 
 public class Register3_1 extends AppCompatActivity {
 
@@ -24,7 +23,7 @@ public class Register3_1 extends AppCompatActivity {
                 .load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/74d21f0a-23df-4311-bdff-4c363e7dcc3a")
                 .into((ImageView) findViewById(R.id.r6693ogmqery));
 
-        View button1 = findViewById(R.id.ry5dxvl1ozvi);
+        View button1 = findViewById(R.id.btnConfirm);
         button1.setOnClickListener(v -> System.out.println("Pressed"));
     }
 }

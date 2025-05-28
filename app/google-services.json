@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "117595543674",
+    "project_id": "healthyme-ttun-hphuc",
+    "storage_bucket": "healthyme-ttun-hphuc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117595543674:android:577b9ee21e59269f7203c3",
+        "android_client_info": {
+          "package_name": "com.example.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "117595543674-up24ik0tp5duajsrl60asvijgisl8v4j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.project",
+            "certificate_hash": "3c8cd1ee74ea7f6f28de2da7e6cc93b117964e77"
+          }
+        },
+        {
+          "client_id": "117595543674-lkfo1345dbr8kai6hbe11gsp78o5fgr5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9Z3_I3LafKXOhfOGYOjL9_QJNsd-lzs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "117595543674-lkfo1345dbr8kai6hbe11gsp78o5fgr5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
