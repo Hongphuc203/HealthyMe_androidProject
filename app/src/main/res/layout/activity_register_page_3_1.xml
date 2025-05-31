@@ -179,7 +179,7 @@
 		</LinearLayout>
 	</ScrollView>
 	<LinearLayout
-		android:id="@+id/ry5dxvl1ozvi"
+		android:id="@+id/btnConfirm"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:gravity="center_horizontal"

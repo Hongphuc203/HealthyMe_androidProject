@@ -1,32 +1,67 @@
 package com.example.project;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+
+import java.util.Map;
+import java.util.HashMap;
 
 public class LoginPage extends AppCompatActivity {
 
-    private String editTextValue1 = "";
+
+    LinearLayout btnLogin, btnLoginGG;
+    TextView txtRegister, forgotPassword;
+    EditText edtEmail, edtPassword;
+
+    private FirebaseAuth mAuth;
+    private GoogleSignInClient googleSignInClient;
+    private ActivityResultLauncher<Intent> googleSignInLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
+        btnLogin = findViewById(R.id.btnLogin);
+        txtRegister = findViewById(R.id.txtRegister);
+        edtEmail = findViewById(R.id.edtEmail);
+        edtPassword = findViewById(R.id.edtPassword);
+        btnLoginGG = findViewById(R.id.btnLoginGG);
+        forgotPassword = findViewById(R.id.forgotPassword);
 
         // Ép kiểu rõ ràng về ImageView để tránh lỗi ambiguous method call
-        ImageView img1 = findViewById(R.id.rm9gx8tna7qr);
-        ImageView img2 = findViewById(R.id.ridf6rzh4fx);
-        ImageView img3 = findViewById(R.id.rf7w61n68etu);
-        ImageView img4 = findViewById(R.id.ri63vs72r6vl);
-        ImageView img5 = findViewById(R.id.rdpbxnncp84m);
-        ImageView img6 = findViewById(R.id.rlsujbrsp6y);
-        ImageView img7 = findViewById(R.id.r82m4wguhbh);
-        ImageView img8 = findViewById(R.id.r0093rj4wtn8zb);
+        ImageView img1 = findViewById(R.id.img1);
+        ImageView img2 = findViewById(R.id.img2);
+        ImageView img3 = findViewById(R.id.img3);
+        ImageView img4 = findViewById(R.id.img4);
+        ImageView img5 = findViewById(R.id.img5);
+        ImageView img6 = findViewById(R.id.img6);
+        ImageView img7 = findViewById(R.id.img7);
 
         Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5e7098a2-003f-401f-8cc3-b2c50c39829a").into(img1);
         Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/2b44e21f-a5d5-42d4-a55f-eec1345beec0").into(img2);
@@ -35,29 +70,140 @@ public class LoginPage extends AppCompatActivity {
         Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/0cc02715-9c52-4f58-8a77-6da2dc7e1be0").into(img5);
         Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a4c74317-aa16-435f-b5c7-e1fdae1315c6").into(img6);
         Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d14fe48b-26a5-4ea9-9999-18eb0f2c9632").into(img7);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/6bb4f200-217f-47d8-b87f-734803a9c054").into(img8);
 
-        EditText editText1 = findViewById(R.id.ryujd5w5degp);
-        editText1.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                editTextValue1 = s.toString();
+        // Biến để theo dõi trạng thái hiển thị mật khẩu
+        final boolean[] isPasswordVisible = {false};
+
+        img3.setOnClickListener(v -> {
+            if (isPasswordVisible[0]) {
+                // Nếu đang hiển thị -> ẩn đi
+                edtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                img3.setImageResource(R.drawable.visibility_on); // ẩn
+            } else {
+                // Nếu đang ẩn -> hiển thị
+                edtPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                img3.setImageResource(R.drawable.visibility_off);   // hiện
             }
-
-            @Override
-            public void afterTextChanged(Editable s) {}
+            // Di chuyển con trỏ về cuối chuỗi
+            edtPassword.setSelection(edtPassword.length());
+            isPasswordVisible[0] = !isPasswordVisible[0];
         });
 
-        View button1 = findViewById(R.id.rriou8zz9xb);
-        button1.setOnClickListener(v -> System.out.println("Pressed"));
 
-        View button2 = findViewById(R.id.rwt2nem0tk7);
-        button2.setOnClickListener(v -> System.out.println("Pressed"));
+        // Sự kiện đăng nhập bằng email/password
 
-        View button3 = findViewById(R.id.rmfd4wcx9iu);
-        button3.setOnClickListener(v -> System.out.println("Pressed"));
+        btnLogin.setOnClickListener(v -> {
+            String email = edtEmail.getText().toString().trim();
+            String password = edtPassword.getText().toString().trim();
+
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(LoginPage.this, "Vui lòng nhập đủ email và mật khẩu", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            mAuth = FirebaseAuth.getInstance();
+
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(LoginPage.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginPage.this, home.class));
+                            finish();
+                        } else {
+                            Toast.makeText(LoginPage.this, "Đăng nhập thất bại: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        });
+
+        // Cấu hình Google Sign In
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        // 2. Đăng ký launcher cho kết quả từ Google SignIn
+        googleSignInLauncher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
+                        try {
+                            GoogleSignInAccount account = task.getResult(ApiException.class);
+                            firebaseAuthWithGoogle(account.getIdToken());
+                        } catch (ApiException e) {
+                            Toast.makeText(this, "Google sign in thất bại", Toast.LENGTH_SHORT).show();
+                            Log.e("GOOGLE_LOGIN", "Lỗi: " + e.getMessage(), e);
+                        }
+                    }
+                }
+        );
+
+        btnLoginGG.setOnClickListener(v -> {
+            // Bắt buộc cho phép chọn lại tài khoản
+            googleSignInClient.signOut().addOnCompleteListener(task -> {
+                Intent signInIntent = googleSignInClient.getSignInIntent();
+                googleSignInLauncher.launch(signInIntent);
+            });
+        });
+
+        txtRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(LoginPage.this, register.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(LoginPage.this, "Lỗi: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1001) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                if (account != null) {
+                    firebaseAuthWithGoogle(account.getIdToken());
+                }
+            } catch (ApiException e) {
+                Toast.makeText(this, "Google Sign In failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+
+                        Map<String, Object> userData = new HashMap<>();
+                        userData.put("fullName", user.getDisplayName());
+                        userData.put("email", user.getEmail());
+
+                        FirebaseFirestore.getInstance().collection("users")
+                                .document(user.getUid())
+                                .set(userData, SetOptions.merge()) // chỉ ghi đè thông tin đơn giản
+                                .addOnSuccessListener(unused -> {
+                                    startActivity(new Intent(this, Register2.class));
+                                    finish();
+                                })
+                                .addOnFailureListener(e ->
+                                        Toast.makeText(this, "Lỗi lưu dữ liệu người dùng", Toast.LENGTH_SHORT).show()
+                                );
+                    } else {
+                        Toast.makeText(this, "Đăng nhập Google thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+
 }
