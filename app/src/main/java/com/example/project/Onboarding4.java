@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -8,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 
 public class Onboarding4 extends AppCompatActivity {
+
+    ImageView btnNext4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +22,14 @@ public class Onboarding4 extends AppCompatActivity {
 
         Glide.with(this)
                 .load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/e83bce2a-cf79-42c4-aa09-0ff40d6b5aed")
-                .into((ImageView) findViewById(R.id.r7g2ppca0l3y));
+                .into((ImageView) findViewById(R.id.btnNext4));
+
+        btnNext4 = findViewById(R.id.btnNext4);
+
+        btnNext4.setOnClickListener(v -> {
+            Intent intent = new Intent(Onboarding4.this, LoginPage.class);
+            startActivity(intent);
+        });
+
     }
 }

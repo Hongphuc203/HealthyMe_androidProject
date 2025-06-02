@@ -112,7 +112,7 @@ public class register extends AppCompatActivity {
                             user.put("email", email);
                             user.put("goal", "");
                             user.put("gender", "");
-                            user.put("dob", "");
+                            user.put("birth", "");
                             user.put("weight", "");
                             user.put("height", "");
 

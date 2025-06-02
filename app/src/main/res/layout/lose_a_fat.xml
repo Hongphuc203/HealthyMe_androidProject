@@ -17,7 +17,7 @@
         android:layout_height="264dp"
         android:layout_marginBottom="41dp"
         android:layout_marginHorizontal="22dp"
-        android:background="@drawable/img"
+        android:background="@drawable/lose_a_fat"
         android:scaleType="fitXY"
          />
 

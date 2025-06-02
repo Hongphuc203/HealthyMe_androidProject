@@ -19,7 +19,7 @@
 			android:layout_height="match_parent"
 			android:orientation="vertical">
 			<TextView
-				android:id="@+id/rabblxecxgf"
+				android:id="@+id/txtHealthyMe"
 				android:textColor="#1D1517"
 				android:textSize="36sp"
 				android:textStyle="bold"
@@ -28,10 +28,10 @@
 				android:layout_height="wrap_content"
 				android:layout_width="wrap_content"
 				android:layout_gravity="center_horizontal"
-				android:text="DIDPOOLFit"
+				android:text="HealthyMe"
 			/>
 			<TextView
-				android:id="@+id/rux9skw5w87l"
+				android:id="@+id/txtEverybodyCanTrain"
 				android:textColor="#FFFFFF"
 				android:textSize="18sp"
 				android:layout_marginBottom="264dp"
@@ -41,7 +41,7 @@
 				android:layout_gravity="center_horizontal"
 			/>
 			<LinearLayout
-				android:id="@+id/ras7tn3q0vlv"
+				android:id="@+id/btnGetStarted"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center_horizontal"
@@ -52,7 +52,7 @@
 				android:focusable="true"
 				android:orientation="vertical">
 				<TextView
-					android:id="@+id/rvovaj71db1"
+					android:id="@+id/txtGetStarted"
 					android:textColor="#FFFFFF"
 					android:textSize="16sp"
 					android:textStyle="bold"
