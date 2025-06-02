@@ -1,11 +1,20 @@
 package com.example.project;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ChooseWorkOutType extends AppCompatActivity {
     @Override protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +41,43 @@ public class ChooseWorkOutType extends AppCompatActivity {
 
         // 4. Xử lý nút Confirm
         findViewById(R.id.btnConfirm).setOnClickListener(v -> {
-            int idx = pager.getCurrentItem();
-            // idx = 0,1,2 tuỳ bạn xử lý tiếp
+            int idx = pager.getCurrentItem(); // 0, 1, 2
+
+            String goal;
+            switch (idx) {
+                case 0:
+                    goal = "Improve Shape";
+                    break;
+                case 1:
+                    goal = "Lean & Tone";
+                    break;
+                case 2:
+                    goal = "Lose Fat";
+                    break;
+                default:
+                    goal = "Unknown";
+            }
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null) {
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                Map<String, Object> data = new HashMap<>();
+                data.put("goal", goal);
+
+                db.collection("users")
+                        .document(user.getUid())
+                        .update(data)
+                        .addOnSuccessListener(unused -> {
+                            Toast.makeText(this, "Lưu mục tiêu thành công", Toast.LENGTH_SHORT).show();
+                            // Chuyển sang Home
+                            startActivity(new Intent(ChooseWorkOutType.this, SuccessRegistration.class));
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(this, "Lỗi khi lưu mục tiêu", Toast.LENGTH_SHORT).show();
+                        });
+            } else {
+                Toast.makeText(this, "Chưa đăng nhập", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }

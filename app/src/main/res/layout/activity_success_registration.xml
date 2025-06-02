@@ -31,11 +31,10 @@
 				android:orientation="vertical">
 
 				<TextView
-					android:id="@+id/rtflxjjp7yl"
+					android:id="@+id/txtWelcome"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginBottom="6dp"
-					android:text="Welcome, Stefani"
 					android:textColor="#1D1517"
 					android:textSize="20sp"
 					android:textStyle="bold" />
@@ -52,7 +51,7 @@
 			</LinearLayout>
 
 			<LinearLayout
-				android:id="@+id/rgugbxsfkcd"
+				android:id="@+id/btnGoToHome"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginStart="30dp"
@@ -67,7 +66,7 @@
 				android:paddingVertical="18dp">
 
 				<TextView
-					android:id="@+id/rfqbvzp55xov"
+					android:id="@+id/txtGoToHome"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="Go To Home"

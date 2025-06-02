@@ -33,20 +33,6 @@ public class Register2 extends AppCompatActivity {
         setContentView(R.layout.activity_register_page_2);
 
         EditText edtGender = findViewById(R.id.edtGender);
-
-        edtGender.setFocusable(false);
-        edtGender.setClickable(true);
-
-        edtGender.setOnClickListener(v -> {
-            String[] genders = {"Nam", "Nữ", "Khác"};
-
-            new AlertDialog.Builder(Register2.this)
-                    .setTitle("Chọn giới tính")
-                    .setItems(genders, (dialog, which) -> {
-                        edtGender.setText(genders[which]);
-                    })
-                    .show();
-        });
         EditText edtBirth = findViewById(R.id.edtBirth);
         EditText edtWeight = findViewById(R.id.edtWeight); // "KG"
         EditText edtHeight = findViewById(R.id.edtHeight);  // "CM"
@@ -82,6 +68,21 @@ public class Register2 extends AppCompatActivity {
 
             datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
             datePickerDialog.show();
+        });
+
+        // Giới tính
+        edtGender.setFocusable(false);
+        edtGender.setClickable(true);
+
+        edtGender.setOnClickListener(v -> {
+            String[] genders = {"Nam", "Nữ", "Khác"};
+
+            new AlertDialog.Builder(Register2.this)
+                    .setTitle("Chọn giới tính")
+                    .setItems(genders, (dialog, which) -> {
+                        edtGender.setText(genders[which]);
+                    })
+                    .show();
         });
 
         // Xử lý khi nhấn Confirm
@@ -163,8 +164,7 @@ public class Register2 extends AppCompatActivity {
                     .update(updateData)
                     .addOnSuccessListener(unused -> {
                         Toast.makeText(this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Register2.this, Register3_1.class));
-                        finish();
+                        startActivity(new Intent(Register2.this, ChooseWorkOutType.class));
                     })
                     .addOnFailureListener(e -> {
                         Toast.makeText(this, "Lỗi khi cập nhật: " + e.getMessage(), Toast.LENGTH_SHORT).show();

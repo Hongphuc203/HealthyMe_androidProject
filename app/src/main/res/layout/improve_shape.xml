@@ -15,7 +15,7 @@
 		android:layout_width="183dp"
 		android:layout_height="290dp"
 		android:layout_marginBottom="25dp"
-		android:background="@drawable/improveshape"
+		android:background="@drawable/improve_shape"
 		android:scaleType="fitXY"
 		 />
 

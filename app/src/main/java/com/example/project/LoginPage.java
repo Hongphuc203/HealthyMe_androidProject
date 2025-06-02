@@ -25,6 +25,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -105,13 +106,52 @@ public class LoginPage extends AppCompatActivity {
             mAuth = FirebaseAuth.getInstance();
 
             mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(task -> {
+                    .addOnCompleteListener(this, task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(LoginPage.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginPage.this, home.class));
-                            finish();
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            String uid = user.getUid();
+
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            DocumentReference docRef = db.collection("users").document(uid);
+
+                            docRef.get().addOnSuccessListener(documentSnapshot -> {
+                                if (documentSnapshot.exists()) {
+                                    // Kiểm tra xem đã có đầy đủ thông tin chưa
+                                    String gender = documentSnapshot.getString("gender");
+                                    String birth = documentSnapshot.getString("birth");
+                                    String height = documentSnapshot.getString("goal");
+                                    String weight = documentSnapshot.getString("goal");
+                                    String goal = documentSnapshot.getString("goal");
+
+                                    if (gender == null || gender.isEmpty() || birth == null || birth.isEmpty() || height == null || height.isEmpty() || weight == null || weight.isEmpty()) {
+                                        // Thiếu thông tin -> chuyển sang Register2
+                                        Intent intent = new Intent(LoginPage.this, Register2.class);
+                                        startActivity(intent);
+                                    } else if (goal == null || goal.isEmpty()) {
+                                        // Chưa chọn goal -> chuyển sang ChooseWorkOutType
+                                        Intent intent = new Intent(LoginPage.this, ChooseWorkOutType.class);
+                                        startActivity(intent);
+                                    } else {
+                                        // Nếu đã ầy đủ thông tin -> chuyển sang home
+                                        Intent intent = new Intent(LoginPage.this, home.class);
+                                        startActivity(intent);
+                                    }
+                                } else {
+                                    // Lần đầu → tạo document + chuyển Register2
+                                    Map<String, Object> userData = new HashMap<>();
+                                    userData.put("fullName", user.getDisplayName());
+                                    userData.put("email", user.getEmail());
+
+                                    docRef.set(userData)
+                                            .addOnSuccessListener(unused -> {
+                                                Intent intent = new Intent(LoginPage.this, Register2.class);
+                                                startActivity(intent);
+                                            });
+                                }
+                                finish();
+                            });
                         } else {
-                            Toast.makeText(LoginPage.this, "Đăng nhập thất bại: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Đăng nhập Google thất bại", Toast.LENGTH_SHORT).show();
                         }
                     });
         });
@@ -123,7 +163,7 @@ public class LoginPage extends AppCompatActivity {
                 .build();
         googleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        // 2. Đăng ký launcher cho kết quả từ Google SignIn
+        // Đăng ký launcher cho kết quả từ Google SignIn
         googleSignInLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 result -> {
@@ -180,25 +220,51 @@ public class LoginPage extends AppCompatActivity {
 
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
-        mAuth.signInWithCredential(credential)
+        FirebaseAuth.getInstance().signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        FirebaseUser user = mAuth.getCurrentUser();
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        String uid = user.getUid();
 
-                        Map<String, Object> userData = new HashMap<>();
-                        userData.put("fullName", user.getDisplayName());
-                        userData.put("email", user.getEmail());
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        DocumentReference docRef = db.collection("users").document(uid);
 
-                        FirebaseFirestore.getInstance().collection("users")
-                                .document(user.getUid())
-                                .set(userData, SetOptions.merge()) // chỉ ghi đè thông tin đơn giản
-                                .addOnSuccessListener(unused -> {
-                                    startActivity(new Intent(this, Register2.class));
-                                    finish();
-                                })
-                                .addOnFailureListener(e ->
-                                        Toast.makeText(this, "Lỗi lưu dữ liệu người dùng", Toast.LENGTH_SHORT).show()
-                                );
+                        docRef.get().addOnSuccessListener(documentSnapshot -> {
+                            if (documentSnapshot.exists()) {
+                                // Kiểm tra xem đã có đầy đủ thông tin chưa
+                                String gender = documentSnapshot.getString("gender");
+                                String birth = documentSnapshot.getString("birth");
+                                String height = documentSnapshot.getString("goal");
+                                String weight = documentSnapshot.getString("goal");
+                                String goal = documentSnapshot.getString("goal");
+
+                                if (gender == null || gender.isEmpty() || birth == null || birth.isEmpty() || height == null || height.isEmpty() || weight == null || weight.isEmpty()) {
+                                    // Thiếu thông tin -> chuyển sang Register2
+                                    Intent intent = new Intent(LoginPage.this, Register2.class);
+                                    startActivity(intent);
+                                } else if (goal == null || goal.isEmpty()) {
+                                    // Chưa chọn goal -> chuyển sang ChooseWorkOutType
+                                    Intent intent = new Intent(LoginPage.this, ChooseWorkOutType.class);
+                                    startActivity(intent);
+                                } else {
+                                    // Nếu đã ầy đủ thông tin -> chuyển sang home
+                                    Intent intent = new Intent(LoginPage.this, home.class);
+                                    startActivity(intent);
+                                }
+                            } else {
+                                // Lần đầu → tạo document + chuyển Register2
+                                Map<String, Object> userData = new HashMap<>();
+                                userData.put("fullName", user.getDisplayName());
+                                userData.put("email", user.getEmail());
+
+                                docRef.set(userData)
+                                        .addOnSuccessListener(unused -> {
+                                            Intent intent = new Intent(LoginPage.this, Register2.class);
+                                            startActivity(intent);
+                                        });
+                            }
+                            finish();
+                        });
                     } else {
                         Toast.makeText(this, "Đăng nhập Google thất bại", Toast.LENGTH_SHORT).show();
                     }
