@@ -49,7 +49,14 @@
 						android:id="@+id/rzt6oqp1zk7"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+					/>
+
+					<EditText
+						android:id="@+id/rzt6oqp1zk7"
+						android:layout_width="match_parent"
+						android:layout_height="45dp"
 						android:layout_weight="1"
+						android:background="@null"
 						android:text="Masi Ramezanzade"
 						android:textColor="#1D1517"
 						android:textSize="20sp"
