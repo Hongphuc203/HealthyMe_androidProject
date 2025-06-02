@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Project"
         tools:targetApi="31" >
         <activity
-            android:name=".LoginPage"
+            android:name=".WelcomeScreen"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +22,15 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Onboarding1" />
+        <activity android:name=".Onboarding2" />
+        <activity android:name=".Onboarding3" />
+        <activity android:name=".Onboarding4" />
+        <activity android:name=".LoginPage" />
         <activity android:name=".register" />
         <activity android:name=".Register2" />
+        <activity android:name=".SuccessRegistration" />
+        <activity android:name=".ChooseWorkOutType" />
         <activity android:name=".home" />
 
 

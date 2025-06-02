@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LearnAndTone"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/cr22lr495c050f6eea4ce"
+    android:paddingVertical="36dp"
+    android:elevation="22dp"
+    android:gravity="center_horizontal">
+
+    <!-- Hình ảnh -->
+    <ImageView
+        android:id="@+id/ImgLeanTone"
+        android:layout_width="205dp"
+        android:layout_height="294dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="35dp"
+        android:background="@drawable/lean_and_tone"
+        android:scaleType="fitXY"
+        />
+
+    <!-- Tiêu đề -->
+    <TextView
+        android:id="@+id/tvLearnToneTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Lean &amp; Tone"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <!-- Gạch phân cách -->
+    <View
+        android:layout_width="50dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="19dp"
+        android:background="#F7F8F8" />
+
+    <!-- Mô tả -->
+    <TextView
+        android:id="@+id/tvLearnToneDesc"
+        android:layout_width="198dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:gravity="center"
+        android:text="I’m “skinny fat”. look thin but have no shape. I want to add lean muscle in the right way"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp" />
+
+</LinearLayout>
