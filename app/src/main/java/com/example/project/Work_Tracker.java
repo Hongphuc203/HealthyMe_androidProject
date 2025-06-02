@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
@@ -8,21 +9,34 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Work_Tracker extends AppCompatActivity {
     private String editTextValue1 = "";
+    private static final String[] DAYS = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
+    private static final float[] VALUES = {20f, 45f, 30f, 55f, 75f, 90f, 60f};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_tracker);
-
+        LineChart chart = findViewById(R.id.lineChart);
+        setupChart(chart);
         // ImageViews
         ImageView image1 = findViewById(R.id.rmi23iviyo7k);
-        ImageView image2 = findViewById(R.id.rdm60wwgb709);
-        ImageView image3 = findViewById(R.id.rlzzvqokshij);
-        ImageView image4 = findViewById(R.id.rtkum3zhxtcq);
         ImageView image5 = findViewById(R.id.rmtfige432zf);
         ImageView image6 = findViewById(R.id.rksfzc3cg6oh);
         ImageView image7 = findViewById(R.id.rccmblxkakjl);
@@ -39,9 +53,6 @@ public class Work_Tracker extends AppCompatActivity {
 
         // Load images with Glide
         Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/1700ede5-aea7-4e1b-934d-4405ae39eafa").into(image1);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/6b5ad503-fcc7-47dd-831c-15c2859bcc83").into(image2);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/39190eca-3ea4-4da9-887c-735507a9a9f9").into(image3);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/bcaa960c-f300-497d-8fc2-492da21aa97b").into(image4);
         Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/475e6676-039c-43ed-939e-a09c17d31ef1").into(image5);
         Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c65cdc8d-f349-41f9-b9ea-637bec018f78").into(image6);
         Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/72f03aa4-096a-44f2-9a69-96bdc574ef81").into(image7);
@@ -77,5 +88,76 @@ public class Work_Tracker extends AppCompatActivity {
                 System.out.println("Pressed");
             }
         });
+    }
+    private void setupChart(LineChart chart) {
+        // 1. Dữ liệu Entry
+        List<Entry> entries = new ArrayList<>();
+        for (int i = 0; i < VALUES.length; i++) {
+            entries.add(new Entry(i, VALUES[i]));
+        }
+
+        // 2. DataSet
+        LineDataSet set = new LineDataSet(entries, "");
+        set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+        set.setDrawCircles(false);
+        set.setDrawValues(false);
+        set.setLineWidth(2f);
+        set.setColor(Color.WHITE);
+        set.setDrawFilled(true);
+        set.setFillAlpha(50);
+        set.setFillColor(Color.WHITE);
+
+        // 3. Gán dữ liệu
+        chart.setData(new LineData(set));
+
+        // 4. X-Axis
+        XAxis x = chart.getXAxis();
+        x.setPosition(XAxis.XAxisPosition.BOTTOM);
+        x.setGranularity(1f);
+        x.setValueFormatter(new IndexAxisValueFormatter(DAYS));
+        x.setTextColor(Color.WHITE);
+        x.setTextSize(14f);
+        x.setDrawGridLines(false);
+
+        // 1. Trục trái: chỉ vẽ grid, không hiển thị giá trị
+        YAxis left = chart.getAxisLeft();
+        left.setDrawLabels(false);      // ẩn nhãn số
+        left.setDrawAxisLine(false);    // ẩn đường trục
+        left.setDrawGridLines(false);    // vẫn vẽ grid ngang
+
+        // 2. Trục phải: hiển thị % nguyên
+        YAxis right = chart.getAxisRight();
+        right.setEnabled(true);
+        right.setDrawGridLines(true);
+        right.setGridColor(Color.WHITE);  // đặt màu trắng cho grid
+        right.setGridLineWidth(0.5f);       // độ dày tuỳ ý
+        right.setAxisMinimum(0f);
+        right.setAxisMaximum(100f);
+        right.setGranularity(20f);
+        right.setLabelCount(6, true);
+        right.setTextColor(Color.WHITE);
+        right.setTextSize(14f);
+
+        // Formatter ép in nguyên kèm ký tự “%”
+        right.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                if (value == 0f) {
+                    return "";
+                }
+                return ((int) value) + "%";
+            }
+        });
+
+        // 6. MarkerView (tooltip)
+        LineMarkerView mv = new LineMarkerView(this, DAYS, VALUES);
+        chart.setMarker(mv);
+
+        // 7. Tối ưu hiển thị
+        chart.getDescription().setEnabled(false);
+        chart.getLegend().setEnabled(false);
+        chart.setTouchEnabled(true);
+        chart.animateX(800);
+        chart.invalidate();
     }
 }

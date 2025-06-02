@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 1. Shadow layer: offset và mờ -->
+    <item
+        android:top="2dp"
+        android:left="2dp"
+        android:right="2dp"
+        android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <!-- màu đen mờ -->
+            <solid android:color="#33000000"/>
+            <!-- bo góc 8dp -->
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+
+    <!-- 2. Main background: trắng, bo góc -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFFFF"/>
+            <corners android:radius="8dp"/>
+        </shape>
+    </item>
+
+</layer-list>

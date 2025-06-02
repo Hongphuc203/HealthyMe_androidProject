@@ -33,6 +33,18 @@ android {
 }
 
 dependencies {
+    implementation ("com.jakewharton.threetenabp:threetenabp:1.4.4")
+    implementation ("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation ("com.github.alamkanak:android-week-view:1.2.6")
+    implementation ("com.google.android.material:material:1.11.0")
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+    implementation ("androidx.camera:camera-extensions:1.2.0")
+    implementation ("androidx.camera:camera-core:1.2.0")
+    implementation ("androidx.camera:camera-camera2:1.2.0")
+    implementation ("androidx.camera:camera-lifecycle:1.2.0")
+    implementation ("androidx.camera:camera-view:1.2.0")
+    implementation ("androidx.viewpager2:viewpager2:1.1.0")
+    implementation ("com.google.android.material:material:1.10.0")
     // Firebase BoM quản lý version tự động
     implementation(platform("com.google.firebase:firebase-bom:33.14.0"))
 
