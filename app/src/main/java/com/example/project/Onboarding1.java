@@ -13,7 +13,7 @@ public class Onboarding1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_onboarding_1); // Đổi tên layout nếu cần
+        setContentView(R.layout.activity_onboarding_1);
 
         Glide.with(this)
                 .load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/ecacf8a7-d652-4791-ab38-7c534dd960c7")
