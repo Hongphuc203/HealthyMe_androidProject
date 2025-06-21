@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:backgroundTint="#FDD6EF"
+    android:background="@drawable/bg_activity_card"
+    android:elevation="5dp"
+    android:layout_marginBottom="12dp">
+
+    <!-- Icon minh họa -->
+    <ImageView
+        android:id="@+id/imgActivityIcon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/ic_default"
+        android:scaleType="fitCenter"
+        />
+
+    <!-- Nội dung -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtActivityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Drink 300ml Water"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#222222" />
+
+        <TextView
+            android:id="@+id/txtActivityTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About 3 minutes ago"
+            android:textSize="14sp"
+            android:textColor="#777777" />
+    </LinearLayout>
+</LinearLayout>

@@ -21,7 +21,7 @@
 				android:orientation="horizontal">
 
 				<LinearLayout
-					android:id="@+id/rvccip4dzft9"
+					android:id="@+id/btnBackAddSchedule"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginEnd="25dp"
@@ -123,22 +123,24 @@
 					android:layout_marginBottom="30dp"/>
 			</LinearLayout>
 			<LinearLayout
-				android:id="@+id/rnkucte6hkhl"
+				android:id="@+id/Container"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginBottom="159dp"
+				android:layout_marginBottom="70dp"
 				android:layout_marginHorizontal="30dp"
 				android:orientation="vertical">
+
 				<TextView
-					android:id="@+id/r1mh7ac5rc4y"
+					android:id="@+id/TitleOfWorkOut"
 					android:textColor="#1D1517"
 					android:textSize="14sp"
 					android:textStyle="bold"
 					android:layout_marginBottom="10dp"
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
-					android:text="Details Workout"
-				/>
+					android:text="Details Workout" />
+
+				<!-- Choose Workout with Spinner -->
 				<LinearLayout
 					android:id="@+id/ChooseWorkOut"
 					android:layout_width="match_parent"
@@ -148,51 +150,26 @@
 					android:padding="15dp"
 					android:layout_marginBottom="10dp"
 					android:orientation="horizontal">
+
 					<ImageView
 						android:id="@+id/r3imphkoshc1"
 						android:layout_width="20dp"
 						android:layout_height="20dp"
 						android:layout_marginEnd="10dp"
 						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
-					<LinearLayout
-						android:id="@+id/ruvpanxjk21n"
-						android:layout_width="0dp"
+						android:scaleType="fitXY" />
+
+					<Spinner
+						android:id="@+id/spinnerWorkout"
+						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:layout_weight="1"
-						android:gravity="center_vertical"
-						android:layout_marginEnd="5dp"
-						android:orientation="horizontal">
-						<TextView
-							android:id="@+id/TextHiddenChoose"
-							android:textColor="#B6B4C1"
-							android:textSize="12sp"
-							android:layout_marginEnd="32dp"
-							android:layout_height="wrap_content"
-							android:layout_width="wrap_content"
-							android:text="Choose Workout"
-						/>
-						<TextView
-							android:id="@+id/ralt3t33spr9"
-							android:textColor="#A5A3AF"
-							android:textSize="10sp"
-							android:layout_height="wrap_content"
-							android:layout_width="match_parent"
-							android:layout_weight="1"
-							android:text="Upperbody Workout"
-						/>
-					</LinearLayout>
-					<ImageView
-						android:id="@+id/r464rjbxczs4"
-						android:layout_width="5dp"
-						android:layout_height="11dp"
-						android:layout_marginVertical="4dp"
-						android:layout_marginHorizontal="7dp"
-						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
+						android:entries="@array/workout_types"
+						android:background="@android:color/transparent"
+						android:spinnerMode="dropdown"
+						android:textColor="@android:color/black" />
 				</LinearLayout>
+
+				<!-- Difficulty Spinner -->
 				<LinearLayout
 					android:id="@+id/Difficult"
 					android:layout_width="match_parent"
@@ -202,6 +179,7 @@
 					android:padding="15dp"
 					android:layout_marginBottom="10dp"
 					android:orientation="horizontal">
+
 					<ImageView
 						android:id="@+id/rguwaci3ae6g"
 						android:layout_width="15dp"
@@ -210,46 +188,19 @@
 						android:layout_marginStart="2dp"
 						android:layout_marginEnd="12dp"
 						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
-					<LinearLayout
-						android:id="@+id/r54a2h34tpur"
-						android:layout_width="0dp"
-						android:layout_height="wrap_content"
-						android:layout_weight="1"
-						android:gravity="center_vertical"
-						android:layout_marginEnd="5dp"
-						android:orientation="horizontal">
-						<TextView
-							android:id="@+id/TextHiddenDiff"
-							android:textColor="#B6B4C1"
-							android:textSize="12sp"
-							android:layout_marginEnd="32dp"
-							android:layout_height="wrap_content"
-							android:layout_width="wrap_content"
-							android:text="Choose Workout"
-							/>
+						android:scaleType="fitXY" />
 
-						<TextView
-							android:id="@+id/r57cclhpmaum"
-							android:textColor="#A5A3AF"
-							android:textSize="10sp"
-							android:layout_marginEnd="2dp"
-							android:layout_height="wrap_content"
-							android:layout_width="wrap_content"
-							android:text="Beginner"
-						/>
-					</LinearLayout>
-					<ImageView
-						android:id="@+id/rkdyy1kyhaq9"
-						android:layout_width="5dp"
-						android:layout_height="11dp"
-						android:layout_marginVertical="4dp"
-						android:layout_marginHorizontal="7dp"
-						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
+					<Spinner
+						android:id="@+id/spinnerDifficulty"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:entries="@array/difficulty_levels"
+						android:background="@android:color/transparent"
+						android:spinnerMode="dropdown"
+						android:textColor="@android:color/black" />
 				</LinearLayout>
+
+				<!-- Repetition EditText -->
 				<LinearLayout
 					android:id="@+id/Repetition"
 					android:layout_width="match_parent"
@@ -258,9 +209,8 @@
 					android:background="@drawable/cr16bf7f8f8"
 					android:padding="15dp"
 					android:layout_marginBottom="10dp"
-					android:clickable="true"
-					android:focusable="true"
 					android:orientation="horizontal">
+
 					<ImageView
 						android:id="@+id/rb5d42e9ya7u"
 						android:layout_width="16dp"
@@ -269,31 +219,22 @@
 						android:layout_marginStart="1dp"
 						android:layout_marginEnd="11dp"
 						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
+						android:scaleType="fitXY" />
 
-					<TextView
-						android:id="@+id/r06p81pd51yux"
-						android:layout_width="wrap_content"
+					<EditText
+						android:id="@+id/editRepetition"
+						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:layout_marginEnd="165dp"
-						android:layout_marginBottom="1dp"
-						android:text="Custom Repetitions"
-						android:textColor="#B6B4C1"
+						android:hint="Enter repetitions"
+						android:inputType="number"
+						android:textColorHint="#B6B4C1"
+						android:textColor="#000000"
 						android:textSize="12sp" />
-					<ImageView
-						android:id="@+id/r4bkzgixg1lp"
-						android:layout_width="5dp"
-						android:layout_height="11dp"
-						android:layout_marginVertical="4dp"
-						android:layout_marginHorizontal="7dp"
-						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
 				</LinearLayout>
+
 			</LinearLayout>
 			<LinearLayout
-				android:id="@+id/rv5lc4ki1ty9"
+				android:id="@+id/SaveButton"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center_horizontal"

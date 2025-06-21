@@ -6,8 +6,7 @@
 	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
-	<ScrollView 
-		android:id="@+id/rc1rzgk1d6im"
+	<ScrollView
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
 		android:layout_weight="1"
@@ -17,7 +16,6 @@
 			android:layout_height="match_parent"
 			android:orientation="vertical">
 			<LinearLayout
-				android:id="@+id/rcug1gk6nakl"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center_vertical"
@@ -25,80 +23,18 @@
 				android:layout_marginBottom="30dp"
 				android:layout_marginHorizontal="30dp"
 				android:orientation="horizontal">
-				<LinearLayout
-					android:id="@+id/r365xx8ch8ah"
+
+				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:background="@drawable/cr8bf7f8f8"
-					android:paddingVertical="11dp"
-					android:paddingHorizontal="13dp"
-					android:clickable="true"
-					android:focusable="true"
-					android:orientation="vertical">
-					<ImageView
-						android:id="@+id/rt9517h4x3aj"
-						android:layout_width="4dp"
-						android:layout_height="9dp"
-						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
-				</LinearLayout>
-				<LinearLayout
-					android:id="@+id/rqnvddc6unm"
-					android:layout_width="0dp"
-					android:layout_height="match_parent"
-					android:layout_weight="1"
-					android:orientation="vertical">
-				</LinearLayout>
-				<TextView
-					android:id="@+id/ryo74nb71ic"
+					android:layout_marginEnd="180dp"
+					android:text="Result"
 					android:textColor="#1D1517"
 					android:textSize="16sp"
-					android:textStyle="bold"
-					android:layout_marginEnd="55dp"
-					android:layout_height="wrap_content"
-					android:layout_width="wrap_content"
-					android:text="Result"
-				/>
-				<LinearLayout
-					android:id="@+id/rvr42l12gon"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:background="@drawable/cr8bf7f8f8"
-					android:padding="9dp"
-					android:layout_marginEnd="15dp"
-					android:clickable="true"
-					android:focusable="true"
-					android:orientation="vertical">
-					<com.google.android.material.imageview.ShapeableImageView
-						android:id="@+id/r5vch2a70pgx"
-						android:layout_width="14dp"
-						android:layout_height="14dp"
-						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
-				</LinearLayout>
-				<LinearLayout
-					android:id="@+id/rzsg5pfze1m"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:background="@drawable/cr8bf7f8f8"
-					android:paddingVertical="14dp"
-					android:paddingHorizontal="11dp"
-					android:clickable="true"
-					android:focusable="true"
-					android:orientation="vertical">
-					<com.google.android.material.imageview.ShapeableImageView
-						android:id="@+id/rkno4g2pv63"
-						android:layout_width="10dp"
-						android:layout_height="4dp"
-						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
-				</LinearLayout>
+					android:textStyle="bold" />
+
 			</LinearLayout>
 			<LinearLayout
-				android:id="@+id/r0rhppthx45na"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center_vertical"
@@ -109,23 +45,24 @@
 				android:layout_marginBottom="30dp"
 				android:layout_marginHorizontal="30dp"
 				android:orientation="horizontal">
+
 				<LinearLayout
-					android:id="@+id/rb9w4ty2wjlq"
-					android:layout_width="wrap_content"
+					android:layout_width="148dp"
 					android:layout_height="wrap_content"
+					android:layout_marginEnd="70dp"
 					android:background="@drawable/cr99lr495c050f6eea4ce"
-					android:paddingVertical="8dp"
+					android:orientation="vertical"
 					android:paddingHorizontal="42dp"
-					android:orientation="vertical">
+					android:paddingVertical="8dp">
+
 					<TextView
-						android:id="@+id/rvn0vst0c2pm"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:text="Photo"
 						android:textColor="#FFFFFF"
 						android:textSize="16sp"
-						android:textStyle="bold"
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:text="Photo"
-					/>
+						android:textStyle="bold" />
 				</LinearLayout>
 				<EditText
 					android:inputType="text"
@@ -141,21 +78,18 @@
 				/>
 			</LinearLayout>
 			<LinearLayout
-				android:id="@+id/r48h74f6rb6j"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="30dp"
 				android:layout_marginHorizontal="30dp"
 				android:orientation="vertical">
 				<LinearLayout
-					android:id="@+id/rsx69xlsdhe"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:gravity="center_vertical"
 					android:layout_marginBottom="15dp"
 					android:orientation="horizontal">
 					<TextView
-						android:id="@+id/rjwb6q4nfem"
 						android:textColor="#1D1517"
 						android:textSize="16sp"
 						android:textStyle="bold"
@@ -166,7 +100,6 @@
 						android:text="Average Progress"
 					/>
 					<TextView
-						android:id="@+id/rb41wzc1rkv"
 						android:textColor="#41D641"
 						android:textSize="12sp"
 						android:textStyle="bold"
@@ -178,13 +111,11 @@
 					/>
 				</LinearLayout>
 				<LinearLayout
-					android:id="@+id/rufpmpaf60mc"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:background="@drawable/cr99bf7f8f8"
 					android:orientation="vertical">
 					<LinearLayout
-						android:id="@+id/rbpwq64kphme"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:background="@drawable/tl99bl99lr495c050f6eea4ce"
@@ -192,7 +123,6 @@
 						android:paddingHorizontal="93dp"
 						android:orientation="vertical">
 						<TextView
-							android:id="@+id/rn2iqkin6o4"
 							android:textColor="#FFFFFF"
 							android:textSize="12sp"
 							android:textStyle="bold"
@@ -204,7 +134,6 @@
 				</LinearLayout>
 			</LinearLayout>
 			<LinearLayout
-				android:id="@+id/rfdi3ws7agnj"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center_vertical"
@@ -212,7 +141,6 @@
 				android:layout_marginHorizontal="30dp"
 				android:orientation="horizontal">
 				<TextView
-					android:id="@+id/r55nmkc836iq"
 					android:textColor="#B6B4C1"
 					android:textSize="16sp"
 					android:textStyle="bold"
@@ -252,25 +180,29 @@
 				/>
 			</LinearLayout>
 			<LinearLayout
-				android:id="@+id/rdgg8jebaq4m"
+				android:id="@+id/CompareFront"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="15dp"
 				android:layout_marginHorizontal="30dp"
-				android:orientation="horizontal">
+				android:paddingHorizontal="10dp"
+				android:orientation="horizontal"
+				android:weightSum="2">
 				<com.google.android.material.imageview.ShapeableImageView
-					android:id="@+id/rshs43txxdm"
+					android:id="@+id/Past"
 					app:shapeAppearanceOverlay="@style/cr40"
-					android:layout_width="150dp"
+					android:layout_width="0dp"
 					android:layout_height="150dp"
 					android:layout_marginEnd="15dp"
 					android:src="@mipmap/ic_launcher"
 					android:scaleType="fitXY"
+					android:layout_weight="1"
 				/>
 				<com.google.android.material.imageview.ShapeableImageView
-					android:id="@+id/ridk7ea0ze3"
+					android:id="@+id/Present"
 					app:shapeAppearanceOverlay="@style/cr40"
-					android:layout_width="150dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
 					android:layout_height="150dp"
 					android:src="@mipmap/ic_launcher"
 					android:scaleType="fitXY"
@@ -293,31 +225,38 @@
 					android:text="Back Facing"
 				/>
 			</LinearLayout>
+			<!-- CompareBack -->
 			<LinearLayout
-				android:id="@+id/rk7r7c8egx98"
+				android:id="@+id/CompareBack"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="15dp"
 				android:layout_marginHorizontal="30dp"
-				android:orientation="horizontal">
+				android:paddingHorizontal="10dp"
+				android:orientation="horizontal"
+				android:weightSum="2">
+
 				<com.google.android.material.imageview.ShapeableImageView
 					android:id="@+id/rgx3uhnv7npv"
 					app:shapeAppearanceOverlay="@style/cr40"
-					android:layout_width="150dp"
+					android:layout_width="0dp"
 					android:layout_height="150dp"
 					android:layout_marginEnd="15dp"
+					android:layout_weight="1"
 					android:src="@mipmap/ic_launcher"
-					android:scaleType="fitXY"
-				/>
+					android:scaleType="fitXY" />
+
 				<com.google.android.material.imageview.ShapeableImageView
 					android:id="@+id/rmyq1k75gnr"
 					app:shapeAppearanceOverlay="@style/cr40"
-					android:layout_width="150dp"
+					android:layout_width="0dp"
 					android:layout_height="150dp"
+					android:layout_weight="1"
 					android:src="@mipmap/ic_launcher"
-					android:scaleType="fitXY"
-				/>
+					android:scaleType="fitXY" />
 			</LinearLayout>
+
+			<!-- Dòng text “Left Facing” (giữ nguyên như cũ) -->
 			<LinearLayout
 				android:id="@+id/rgqmrhdn93qu"
 				android:layout_width="match_parent"
@@ -325,6 +264,7 @@
 				android:gravity="center_horizontal"
 				android:layout_marginBottom="15dp"
 				android:orientation="vertical">
+
 				<TextView
 					android:id="@+id/rrf64e7kilw8"
 					android:textColor="#B6B4C1"
@@ -332,34 +272,41 @@
 					android:textStyle="bold"
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
-					android:text="Left Facing"
-				/>
+					android:text="Left Facing" />
 			</LinearLayout>
+
+			<!-- CompareLeft -->
 			<LinearLayout
-				android:id="@+id/r86g8f3s2j8x"
+				android:id="@+id/CompareLeft"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="15dp"
 				android:layout_marginHorizontal="30dp"
-				android:orientation="horizontal">
+				android:paddingHorizontal="10dp"
+				android:orientation="horizontal"
+				android:weightSum="2">
+
 				<com.google.android.material.imageview.ShapeableImageView
 					android:id="@+id/r6cwy9sa8drl"
 					app:shapeAppearanceOverlay="@style/cr40"
-					android:layout_width="150dp"
+					android:layout_width="0dp"
 					android:layout_height="150dp"
 					android:layout_marginEnd="15dp"
+					android:layout_weight="1"
 					android:src="@mipmap/ic_launcher"
-					android:scaleType="fitXY"
-				/>
+					android:scaleType="fitXY" />
+
 				<com.google.android.material.imageview.ShapeableImageView
 					android:id="@+id/rvm6gx65yz3"
 					app:shapeAppearanceOverlay="@style/cr40"
-					android:layout_width="150dp"
+					android:layout_width="0dp"
 					android:layout_height="150dp"
+					android:layout_weight="1"
 					android:src="@mipmap/ic_launcher"
-					android:scaleType="fitXY"
-				/>
+					android:scaleType="fitXY" />
 			</LinearLayout>
+
+			<!-- Dòng text “Right Facing” (giữ nguyên như cũ) -->
 			<LinearLayout
 				android:id="@+id/r4f775qh1j9f"
 				android:layout_width="match_parent"
@@ -367,6 +314,7 @@
 				android:gravity="center_horizontal"
 				android:layout_marginBottom="15dp"
 				android:orientation="vertical">
+
 				<TextView
 					android:id="@+id/rlzufq5tpem"
 					android:textColor="#B6B4C1"
@@ -374,36 +322,42 @@
 					android:textStyle="bold"
 					android:layout_height="wrap_content"
 					android:layout_width="wrap_content"
-					android:text="Right Facing"
-				/>
+					android:text="Right Facing" />
 			</LinearLayout>
+
+			<!-- CompareRight -->
 			<LinearLayout
-				android:id="@+id/rzrpf34thxmp"
+				android:id="@+id/CompareRight"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginBottom="30dp"
 				android:layout_marginHorizontal="30dp"
-				android:orientation="horizontal">
+				android:paddingHorizontal="10dp"
+				android:orientation="horizontal"
+				android:weightSum="2">
+
 				<com.google.android.material.imageview.ShapeableImageView
 					android:id="@+id/r91jzbjkf8dr"
 					app:shapeAppearanceOverlay="@style/cr40"
-					android:layout_width="150dp"
+					android:layout_width="0dp"
 					android:layout_height="150dp"
 					android:layout_marginEnd="15dp"
+					android:layout_weight="1"
 					android:src="@mipmap/ic_launcher"
-					android:scaleType="fitXY"
-				/>
+					android:scaleType="fitXY" />
+
 				<com.google.android.material.imageview.ShapeableImageView
 					android:id="@+id/rkdoaoypv9h"
 					app:shapeAppearanceOverlay="@style/cr40"
-					android:layout_width="150dp"
+					android:layout_width="0dp"
 					android:layout_height="150dp"
+					android:layout_weight="1"
 					android:src="@mipmap/ic_launcher"
-					android:scaleType="fitXY"
-				/>
+					android:scaleType="fitXY" />
 			</LinearLayout>
+
 			<LinearLayout
-				android:id="@+id/r6lvqx0zjygn"
+				android:id="@+id/btnBackToHome"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:gravity="center_horizontal"

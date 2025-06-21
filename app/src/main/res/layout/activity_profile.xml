@@ -27,7 +27,7 @@
 				android:orientation="horizontal">
 
 				<LinearLayout
-					android:id="@+id/rc8ozhtr6wg"
+					android:id="@+id/btnBackProfile"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:background="@drawable/cr8bf7f8f8"
@@ -66,10 +66,10 @@
 				 />
 
 				<LinearLayout
-					android:id="@+id/ru9lw1e90rxh"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:background="@drawable/cr8bf7f8f8"
+					android:id="@+id/btnLogOut"
+					android:layout_width="23dp"
+					android:layout_height="match_parent"
+					android:background="@drawable/logout"
 					android:clickable="true"
 					android:focusable="true"
 					android:orientation="vertical"
@@ -77,12 +77,6 @@
 					android:paddingVertical="14dp"
 					tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
 
-					<com.google.android.material.imageview.ShapeableImageView
-						android:id="@+id/r79k1xoiwzrb"
-						android:layout_width="10dp"
-						android:layout_height="4dp"
-						android:scaleType="fitXY"
-						android:src="@mipmap/ic_launcher" />
 				</LinearLayout>
 			</LinearLayout>
 
@@ -109,8 +103,8 @@
 						android:layout_height="53dp"
 						android:layout_marginTop="5dp"
 						android:layout_marginEnd="24dp"
-						android:scaleType="fitXY"
-						android:src="@mipmap/ic_launcher" />
+						android:src="@drawable/ic_avatar"
+						android:scaleType="fitXY" />
 
 					<LinearLayout
 						android:id="@+id/rv7i86z6g35n"
@@ -120,10 +114,11 @@
 						android:layout_weight="1"
 						android:orientation="vertical">
 
-						<TextView
-							android:id="@+id/rat9zddkilyh"
+						<EditText
+							android:id="@+id/edtFullNameProfile"
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
+							android:background="@null"
 							android:layout_marginBottom="5dp"
 							android:layout_weight="1"
 							android:text="Masi Ramezanzade"
@@ -131,17 +126,18 @@
 							android:textSize="14sp"
 							android:textStyle="bold" />
 
-						<TextView
-							android:id="@+id/r9e2mqij6dmn"
-							android:layout_width="wrap_content"
+						<Spinner
+							android:id="@+id/spinnerGoal"
+							android:layout_width="159dp"
 							android:layout_height="wrap_content"
-							android:text="Lose a Fat Program"
+							android:background="@null"
+							android:hint=""
 							android:textColor="#B6B4C1"
-							android:textSize="12sp" />
+							android:textSize="10sp" />
 					</LinearLayout>
 
 					<LinearLayout
-						android:id="@+id/rsxzip4zjkhb"
+						android:id="@+id/btnEdit"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="7dp"
@@ -184,11 +180,12 @@
 						android:paddingHorizontal="24dp"
 						android:paddingVertical="11dp">
 
-						<TextView
-							android:id="@+id/rrc8n67xzs2"
+						<EditText
+							android:id="@+id/edtHeightProfile"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_marginBottom="5dp"
+							android:background="@null"
 							android:text="180cm"
 							android:textColor="#C050F6"
 							android:textSize="14sp"
@@ -217,10 +214,11 @@
 						android:paddingHorizontal="26dp"
 						android:paddingVertical="11dp">
 
-						<TextView
-							android:id="@+id/rgjp9acyv4to"
+						<EditText
+							android:id="@+id/edtWeightProfile"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
+							android:background="@null"
 							android:layout_marginBottom="5dp"
 							android:text="65kg"
 							android:textColor="#C050F6"
@@ -250,7 +248,7 @@
 						android:paddingVertical="11dp">
 
 						<TextView
-							android:id="@+id/ryxugx765ui8"
+							android:id="@+id/txtAgeProfile"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_marginBottom="5dp"
@@ -298,16 +296,17 @@
 					android:layout_marginBottom="10dp"
 					android:layout_marginHorizontal="20dp"
 					android:orientation="horizontal">
+
 					<ImageView
 						android:id="@+id/ryr76ge2juk"
-						android:layout_width="11dp"
+						android:layout_width="14dp"
 						android:layout_height="15dp"
 						android:layout_marginVertical="2dp"
 						android:layout_marginStart="4dp"
 						android:layout_marginEnd="14dp"
-						android:src="@mipmap/ic_launcher"
 						android:scaleType="fitXY"
-					/>
+						android:src="@mipmap/ic_launcher" />
+
 					<TextView
 						android:id="@+id/ryllc2kvzpp"
 						android:textColor="#B6B4C1"
@@ -512,15 +511,15 @@
 						android:layout_marginEnd="12dp"
 						android:layout_height="wrap_content"
 						android:layout_width="wrap_content"
+						android:layout_weight="1"
 						android:text="Pop-up Notification"
 					/>
-					<com.google.android.material.imageview.ShapeableImageView
-						android:id="@+id/rg6x303crs9v"
-						android:layout_width="36dp"
+
+					<Switch
+						android:id="@+id/switchPopUpNoti"
+						android:layout_width="wrap_content"
 						android:layout_height="18dp"
-						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
+						android:scaleType="fitXY" />
 				</LinearLayout>
 			</LinearLayout>
 			<LinearLayout
@@ -689,7 +688,7 @@
 			android:paddingVertical="28dp">
 
 			<ImageView
-				android:id="@+id/rowsxmfom8m9"
+				android:id="@+id/iconHome"
 				android:layout_width="24dp"
 				android:layout_height="31dp"
 				android:layout_marginEnd="39dp"
@@ -697,7 +696,7 @@
 				android:src="@mipmap/ic_launcher" />
 
 			<ImageView
-				android:id="@+id/r6o3g3kmue9p"
+				android:id="@+id/iconWorkOut"
 				android:layout_width="19dp"
 				android:layout_height="19dp"
 				android:layout_margin="2dp"
@@ -706,16 +705,15 @@
 
 			<LinearLayout
 				android:id="@+id/ry9cadjzwadd"
-				android:layout_width="0dp"
-				android:layout_height="match_parent"
+				android:layout_width="132dp"
+				android:layout_height="26dp"
 				android:layout_weight="0.05"
 				android:clipChildren="false"
 				android:clipToPadding="false"
-				android:orientation="vertical">
-			</LinearLayout>
+				android:orientation="vertical"></LinearLayout>
 
 			<ImageView
-				android:id="@+id/rcsf7132kocp"
+				android:id="@+id/iconCamera"
 				android:layout_width="18dp"
 				android:layout_height="16dp"
 				android:layout_marginVertical="3dp"
@@ -725,7 +723,7 @@
 				android:src="@mipmap/ic_launcher" />
 
 			<ImageView
-				android:id="@+id/r87jxozk86sd"
+				android:id="@+id/iconProfile"
 				android:layout_width="14dp"
 				android:layout_height="18dp"
 				android:layout_marginHorizontal="4dp"

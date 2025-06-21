@@ -1,57 +1,69 @@
 package com.example.project;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 
 public class WorkoutDetail1 extends AppCompatActivity {
-        @Override
+
+    private LinearLayout btnBackWorkOutDetail1;
+    private ImageView btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8;
+    private LinearLayout btnStartWorkout;
+
+    @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_workout_details1);
 
+            btnBackWorkOutDetail1 = findViewById(R.id.btnBackWorkOutDetail1);
+            // Gán view
+            btn1 = findViewById(R.id.btn1);
+            btn2 = findViewById(R.id.btn2);
+            btn3 = findViewById(R.id.btn3);
+            btn4 = findViewById(R.id.btn4);
+            btn5 = findViewById(R.id.btn5);
+            btn6 = findViewById(R.id.btn6);
+            btn7 = findViewById(R.id.btn7);
+            btn8 = findViewById(R.id.btn8);
+
             // Load images with Glide
             ImageView img1  = (ImageView) findViewById(R.id.r25sndngjqsg);
             ImageView img2  = (ImageView) findViewById(R.id.rtq70gegp3t);
-            ImageView img3  = (ImageView) findViewById(R.id.ryfbd6uf90x);
             ImageView img4  = (ImageView) findViewById(R.id.r49lxmf1onmb);
             ImageView img5  = (ImageView) findViewById(R.id.rmq7ebw8c5ti);
             ImageView img6  = (ImageView) findViewById(R.id.rka1dxowlq9);
-            ImageView img7  = (ImageView) findViewById(R.id.ruydhbnmxeg);
             ImageView img8  = (ImageView) findViewById(R.id.rbvjz9j7aikd);
-            ImageView img9  = (ImageView) findViewById(R.id.ri7gddejvk2l);
             ImageView img10 = (ImageView) findViewById(R.id.rf7105cm8rts);
             ImageView img11 = (ImageView) findViewById(R.id.riuj13dav5mg);
             ImageView img12 = (ImageView) findViewById(R.id.riw5dnfnfc1c);
             ImageView img13 = (ImageView) findViewById(R.id.rw217gj1payf);
-            ImageView img14 = (ImageView) findViewById(R.id.rpoobj1zegkf);
+            ImageView img14 = (ImageView) findViewById(R.id.btn1);
             ImageView img15 = (ImageView) findViewById(R.id.r5zxur3v7o9d);
-            ImageView img16 = (ImageView) findViewById(R.id.rz1dnz4kccye);
+            ImageView img16 = (ImageView) findViewById(R.id.btn2);
             ImageView img17 = (ImageView) findViewById(R.id.ratnc52uz2m);
-            ImageView img18 = (ImageView) findViewById(R.id.r7afel534s9);
+            ImageView img18 = (ImageView) findViewById(R.id.btn3);
             ImageView img19 = (ImageView) findViewById(R.id.r4vmy03esv59);
-            ImageView img20 = (ImageView) findViewById(R.id.roy427r9yst);
+            ImageView img20 = (ImageView) findViewById(R.id.btn4);
             ImageView img21 = (ImageView) findViewById(R.id.rinvfbnywvc);
-            ImageView img22 = (ImageView) findViewById(R.id.rm6vcq2yfkc);
+            ImageView img22 = (ImageView) findViewById(R.id.btn5);
             ImageView img23 = (ImageView) findViewById(R.id.re4an36xbud7);
-            ImageView img24 = (ImageView) findViewById(R.id.rrit8bbcw4x);
+            ImageView img24 = (ImageView) findViewById(R.id.btn6);
             ImageView img25 = (ImageView) findViewById(R.id.rqq830e15ov9);
-            ImageView img26 = (ImageView) findViewById(R.id.rp09suby0kxe);
+            ImageView img26 = (ImageView) findViewById(R.id.btn7);
             ImageView img27 = (ImageView) findViewById(R.id.rtp4th0q58ed);
-            ImageView img28 = (ImageView) findViewById(R.id.rbjm3lf4aw2j);
+            ImageView img28 = (ImageView) findViewById(R.id.btn8);
             ImageView img29 = (ImageView) findViewById(R.id.rchso1mopveq);
             ImageView img30 = (ImageView) findViewById(R.id.ra9gs8js2aq);
 
             Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/oou4bmia_expires_30_days.png").into(img1);
             Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/7y1btzev_expires_30_days.png").into(img2);
-            Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/qumbkmqo_expires_30_days.png").into(img3);
             Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/c936414q_expires_30_days.png").into(img4);
             Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/phjjhan3_expires_30_days.png").into(img5);
             Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/mwdhjjxb_expires_30_days.png").into(img6);
-            Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/t69pyljw_expires_30_days.png").into(img7);
             Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/c8a39njb_expires_30_days.png").into(img8);
-            Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/ka8se98g_expires_30_days.png").into(img9);
             Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/09edccbn_expires_30_days.png").into(img10);
             Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/n4w7pa3v_expires_30_days.png").into(img11);
             Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/a4ly5gad_expires_30_days.png").into(img12);
@@ -75,28 +87,21 @@ public class WorkoutDetail1 extends AppCompatActivity {
             Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/5hfiEgF7x0/9yr1s7dz_expires_30_days.png").into(img30);
 
             // Set up buttons with click listeners
-            View button1 = findViewById(R.id.rcqxrwf8uuta);
-            View button2 = findViewById(R.id.rlqsy2h3wlmq);
-            View button3 = findViewById(R.id.rwzp0aj15hs);
-            View button4 = findViewById(R.id.rcv4hrtchcmh);
-            View button5 = findViewById(R.id.rsminzs9ci6o);
-            View button6 = findViewById(R.id.r9z93evsqx8u);
-            View button7 = findViewById(R.id.rbofjqzap89s);
+            btnBackWorkOutDetail1.setOnClickListener(v -> {
+            Intent intent = new Intent(WorkoutDetail1.this, Work_Tracker.class);
+            startActivity(intent);
+            });
 
-            View.OnClickListener listener = new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    System.out.println("Pressed");
-                }
-            };
+            // Đặt tất cả vào mảng
+            ImageView[] buttons = {btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8};
 
-            button1.setOnClickListener(listener);
-            button2.setOnClickListener(listener);
-            button3.setOnClickListener(listener);
-            button4.setOnClickListener(listener);
-            button5.setOnClickListener(listener);
-            button6.setOnClickListener(listener);
-            button7.setOnClickListener(listener);
+            // Gán sự kiện chung
+            for (ImageView btn : buttons) {
+                btn.setOnClickListener(v -> {
+                    Intent intent = new Intent(this, WorkoutDetail2.class);
+                    startActivity(intent);
+                });
+            }
         }
     }
 

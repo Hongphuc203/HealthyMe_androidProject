@@ -37,7 +37,6 @@
 					android:orientation="vertical">
 
 					<TextView
-						android:id="@+id/r1lyav1h9cny"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginBottom="5dp"
@@ -46,25 +45,23 @@
 						android:textSize="12sp" />
 
 					<TextView
-						android:id="@+id/rzt6oqp1zk7"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-					/>
+						android:layout_height="wrap_content" />
 
-					<EditText
-						android:id="@+id/rzt6oqp1zk7"
+					<TextView
+						android:id="@+id/txtFullName"
 						android:layout_width="match_parent"
 						android:layout_height="45dp"
 						android:layout_weight="1"
 						android:background="@null"
-						android:text="Masi Ramezanzade"
+						android:text=""
 						android:textColor="#1D1517"
 						android:textSize="20sp"
 						android:textStyle="bold" />
 				</LinearLayout>
 
 				<LinearLayout
-					android:id="@+id/NotificationButton"
+					android:id="@+id/btnNotification"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:background="@drawable/cr8bf7f8f8"
@@ -75,8 +72,8 @@
 					tools:ignore="SpeakableTextPresentCheck">
 
 					<com.google.android.material.imageview.ShapeableImageView
-						android:id="@+id/rcx11dlm7acp"
-						android:layout_width="18dp"
+						android:id="@+id/iconNotification"
+						android:layout_width="24dp"
 						android:layout_height="25dp"
 						android:scaleType="fitXY"
 						android:src="@mipmap/ic_launcher" />
@@ -135,17 +132,17 @@
 								android:textStyle="bold" />
 
 							<TextView
-								android:id="@+id/r2ob6qmr2gtr"
+								android:id="@+id/txtBMI"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
 								android:layout_weight="1"
-								android:text="You have a normal weight"
+								android:text=""
 								android:textColor="#FFFFFF"
 								android:textSize="12sp" />
 						</LinearLayout>
 
 						<LinearLayout
-							android:id="@+id/Viewmore"
+							android:id="@+id/btnViewMore"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:background="@drawable/cr50lr495cc8fed6b50f6"
@@ -187,21 +184,21 @@
 				android:paddingHorizontal="20dp"
 				android:paddingVertical="15dp">
 
-				<EditText
+				<TextView
 					android:id="@+id/rx419djg29l8"
-					android:layout_width="0dp"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"
 					android:background="@null"
-					android:hint="Today Target"
 					android:inputType="text"
 					android:paddingVertical="3dp"
-					android:textColor="#1D1517"
-					android:textSize="14sp"
+					android:text="Today Target"
+					android:textColor="@color/black"
+					android:textSize="16sp"
 					android:textStyle="bold" />
 
 				<LinearLayout
-					android:id="@+id/rq2ss1i5x7ck"
+					android:id="@+id/btnCheck"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:background="@drawable/cr50lr495cc8fed6b50f6"
@@ -231,198 +228,301 @@
 				android:textSize="16sp"
 				android:textStyle="bold" />
 
-			<LinearLayout
-				android:id="@+id/r2cceg2hgp1g"
+			<androidx.cardview.widget.CardView
+				android:id="@+id/musicCard"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginHorizontal="30dp"
-				android:layout_marginBottom="16dp"
-				android:background="@drawable/cr16bf7f8f8"
-				android:elevation="10dp"
-				android:orientation="vertical"
-				android:paddingVertical="20dp">
-
-				<TextView
-					android:id="@+id/rx8qddgn9x9g"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="20dp"
-					android:text="Heart Rate"
-					android:textColor="#1D1517"
-					android:textSize="12sp"
-					android:textStyle="bold" />
-
-				<TextView
-					android:id="@+id/raybm1f0hcuu"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="20dp"
-					android:text="78 BPM"
-					android:textColor="#C050F6"
-					android:textSize="14sp"
-					android:textStyle="bold" />
-
-
-				<RelativeLayout
-					android:id="@+id/rrfixh5g0u8_rl"
-					android:layout_width="95dp"
-					android:layout_height="47dp"
-					android:layout_marginStart="159dp">
-
-					<!-- Ảnh nền -->
-
-					<com.google.android.material.imageview.ShapeableImageView
-						android:id="@+id/rrfixh5g0u8"
-						android:layout_width="match_parent"
-						android:layout_height="match_parent"
-						android:scaleType="fitXY"
-						android:src="@drawable/mess" />
-
-					<TextView
-						android:id="@+id/rktfik5xmd4n"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_alignParentEnd="true"
-						android:layout_alignParentBottom="true"
-						android:layout_marginEnd="26dp"
-						android:layout_marginBottom="24dp"
-						android:text="3mins ago"
-						android:textColor="#FFFFFF"
-						android:textSize="10sp" />
-
-
-				</RelativeLayout>
-
-				<ImageView
-					android:id="@+id/rqfh33exgd8"
+				android:layout_marginTop="10dp"
+				android:layout_marginBottom="10dp"
+				app:cardCornerRadius="30dp"
+				app:cardElevation="12dp"
+				>
+				<FrameLayout
+					android:id="@+id/musicCardContainer"
 					android:layout_width="match_parent"
-					android:layout_height="61dp"
-					android:scaleType="fitXY"
-					android:src="@mipmap/ic_launcher" />
-			</LinearLayout>
+					android:layout_height="wrap_content">
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="vertical">
 
+						<LinearLayout
+							android:id="@+id/InforSong"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:orientation="horizontal"
+							android:paddingHorizontal="20dp"
+							android:paddingVertical="15dp"
+							android:gravity="center_vertical">
+
+							<!-- Ảnh album -->
+							<ImageView
+								android:id="@+id/ivAlbumArt"
+								android:layout_width="100dp"
+								android:layout_height="100dp"
+								android:layout_marginEnd="16dp"
+								android:background="@drawable/bg_album_round"
+								android:scaleType="centerCrop"
+								android:src="@drawable/ic_launcher_foreground" />
+
+							<!-- Thông tin bài hát -->
+							<LinearLayout
+								android:layout_width="0dp"
+								android:layout_height="wrap_content"
+								android:layout_weight="1"
+								android:orientation="vertical"
+								android:paddingLeft="10dp">
+
+								<TextView
+									android:id="@+id/tvNowPlaying"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="Now Playing"
+									android:textColor="#B5B7CC"
+									android:textSize="10sp"
+									android:textStyle="bold" />
+
+								<TextView
+									android:id="@+id/tvSongName"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:layout_marginTop="4dp"
+									android:text="Purple Haze"
+									android:textColor="#C050F6"
+									android:textSize="16sp"
+									android:textStyle="bold" />
+
+								<TextView
+									android:id="@+id/tvSongSinger"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:layout_marginTop="4dp"
+									android:layout_marginBottom="10dp"
+									android:text="Andy"
+									android:textColor="#A58CAF"
+									android:textSize="14sp"
+									android:textStyle="bold" />
+							</LinearLayout>
+
+							<!-- Nút chọn bài hát 🎵 -->
+							<Button
+								android:id="@+id/btnChooseSong"
+								android:layout_width="15dp"
+								android:layout_height="15dp"
+								android:layout_marginStart="10dp"
+								android:background="@drawable/queue"
+								android:elevation="4dp" />
+						</LinearLayout>
+
+						<LinearLayout
+							android:id="@+id/ControlSing"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:orientation="vertical">>
+
+							<SeekBar
+								android:id="@+id/seekBar"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginLeft="10dp"
+								android:layout_marginTop="0dp"
+								android:layout_marginRight="10dp"
+								android:progressTint="#B46CFD"
+								android:thumbTint="#8A00E5" />
+
+							<LinearLayout
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="2dp"
+								android:layout_marginBottom="0dp"
+								android:orientation="horizontal"
+								android:paddingHorizontal="16dp">
+
+								<TextView
+									android:id="@+id/tvCurrentTime"
+									android:layout_width="0dp"
+									android:layout_height="wrap_content"
+									android:layout_weight="1"
+									android:text="00:00"
+									android:textColor="#555555"
+									android:textSize="12sp" />
+
+								<TextView
+									android:id="@+id/tvTotalDuration"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:text="03:30"
+									android:textColor="#555555"
+									android:textSize="12sp" />
+							</LinearLayout>
+
+
+							<LinearLayout
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginTop="0dp"
+								android:gravity="center"
+								android:orientation="horizontal">
+
+								<ImageButton
+									android:id="@+id/btnPrev"
+									android:layout_width="48dp"
+									android:layout_height="48dp"
+									android:background="@drawable/pre_song"
+									android:src="@drawable/ic_prev" />
+
+								<ImageButton
+									android:id="@+id/btnPlayPause"
+									android:layout_width="60dp"
+									android:layout_height="64dp"
+									android:layout_marginStart="24dp"
+									android:layout_marginEnd="24dp"
+									android:background="@drawable/play_song"
+									android:src="@drawable/ic_prev" />
+
+								<ImageButton
+									android:id="@+id/btnNext"
+									android:layout_width="48dp"
+									android:layout_height="48dp"
+									android:background="@drawable/next_song"
+									android:src="@drawable/ic_prev" />
+							</LinearLayout>
+						</LinearLayout>
+					</LinearLayout>
+				</FrameLayout>
+			</androidx.cardview.widget.CardView>
 			<LinearLayout
 				android:id="@+id/Statitis"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="30dp"
 				android:layout_marginTop="20dp"
-				android:elevation="22dp"
-				android:orientation="horizontal">
+				android:orientation="horizontal"
+				android:weightSum="2">
 
-				<LinearLayout
-					android:id="@+id/rgw79e18bw26"
-					android:layout_width="wrap_content"
+				<!-- Card 1: Water Intake -->
+				<androidx.cardview.widget.CardView
+					android:layout_width="0dp"
 					android:layout_height="150dp"
-					android:background="@drawable/bgpurple"
-					android:orientation="horizontal"
-					android:paddingHorizontal="20dp">
-
-					<com.github.mikephil.charting.charts.BarChart
-						android:id="@+id/singleBarChart"
-						android:layout_width="wrap_content"
-						android:layout_height="121dp"
-						android:layout_marginTop="20dp" />
+					android:layout_weight="1"
+					android:layout_marginEnd="8dp"
+					android:layout_marginStart="30dp"
+					app:cardCornerRadius="16dp"
+					app:cardElevation="8dp"
+					android:backgroundTint="#F9DEFD"
+					android:padding="0dp">
 
 					<LinearLayout
-						android:id="@+id/r47gwkzeclri"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="20dp"
-						android:orientation="vertical">
-
-						<TextView
-							android:id="@+id/ru0ulo4wg42"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginBottom="5dp"
-							android:text="Water Intake"
-							android:textColor="#1C242A"
-							android:textSize="12sp"
-							android:textStyle="bold" />
-
-						<TextView
-							android:id="@+id/rpopqzbm2zk"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginBottom="10dp"
-							android:text="4 Liters"
-							android:textColor="#C050F6"
-							android:textSize="14sp"
-							android:textStyle="bold" />
-
-						<TextView
-							android:id="@+id/rlv3wtcpdqfj"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginBottom="5dp"
-							android:text="Real time updates"
-							android:textColor="#B6B4C1"
-							android:textSize="10sp" />
-
-						<TextView
-							android:id="@+id/ryad07p9y86"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginHorizontal="18dp"
-							android:layout_marginBottom="3dp"
-							android:text="6am - 8am"
-							android:textColor="#A5A3AF"
-							android:textSize="8sp" />
-
-						<TextView
-							android:id="@+id/rig91c6wvxa"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginStart="18dp"
-							android:text="600ml"
-							android:textColor="#C050F6"
-							android:textSize="8sp"
-							android:textStyle="bold" />
-					</LinearLayout>
-				</LinearLayout>
-
-				<LinearLayout
-					android:id="@+id/rkbxtkgq5thj"
-					android:layout_width="170dp"
-					android:layout_height="150dp"
-					android:layout_marginStart="40dp"
-					android:background="@drawable/bgpurple"
-					android:orientation="vertical"
-					android:paddingTop="20dp">
-
-					<TextView
-						android:id="@+id/r52kibh2q3yf"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginStart="20dp"
-						android:layout_marginBottom="5dp"
-						android:text="Sleep"
-						android:textColor="#1D1517"
-						android:textSize="12sp"
-						android:textStyle="bold" />
-
-					<TextView
-						android:id="@+id/rtgzd2gx0p1q"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_marginStart="20dp"
-						android:text="8h 20m"
-						android:textColor="#00FF66"
-						android:textSize="14sp"
-						android:textStyle="bold" />
-
-					<ImageView
-						android:id="@+id/r8hnwcsf05l8"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:layout_alignParentRight="true"
-						android:layout_marginTop="10dp"
-						android:scaleType="fitXY"
-						android:src="@drawable/sleep" />
+						android:layout_height="match_parent"
+						android:orientation="horizontal"
+						android:padding="20dp">
 
-				</LinearLayout>
+						<com.github.mikephil.charting.charts.BarChart
+							android:id="@+id/singleBarChart"
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_marginEnd="8dp"
+							android:layout_weight="1" />
+
+						<LinearLayout
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:orientation="vertical">
+
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="Water Intake"
+								android:textColor="#1C242A"
+								android:textSize="12sp"
+								android:textStyle="bold" />
+
+							<TextView
+								android:id="@+id/txtLiters"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text=""
+								android:textColor="#C050F6"
+								android:textSize="14sp"
+								android:textStyle="bold" />
+
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="Real time updates"
+								android:textColor="#B6B4C1"
+								android:textSize="10sp" />
+
+							<TextView
+								android:id="@+id/txtTime"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text=""
+								android:textColor="#A5A3AF"
+								android:textSize="8sp" />
+
+							<TextView
+								android:id="@+id/txtMl"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text=""
+								android:textColor="#C050F6"
+								android:textSize="8sp"
+								android:textStyle="bold" />
+						</LinearLayout>
+					</LinearLayout>
+				</androidx.cardview.widget.CardView>
+
+				<!-- Card 2: Sleep -->
+				<androidx.cardview.widget.CardView
+					android:id="@+id/ViewSleepTracker"
+					android:layout_width="0dp"
+					android:layout_height="150dp"
+					android:layout_weight="1"
+					android:layout_marginStart="8dp"
+					app:cardCornerRadius="16dp"
+					app:cardElevation="8dp"
+					android:layout_marginEnd="30dp"
+					android:backgroundTint="@android:color/white">
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:orientation="vertical"
+						android:padding="0dp">
+
+						<TextView
+							android:paddingTop="20dp"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="Sleep"
+							android:textColor="#1D1517"
+							android:textSize="12sp"
+							android:paddingHorizontal="20dp"
+							android:textStyle="bold" />
+
+						<TextView
+							android:id="@+id/txtSleepHome"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:text="8h 20m"
+							android:textColor="#00FF66"
+							android:textSize="14sp"
+							android:paddingHorizontal="20dp"
+							android:textStyle="bold" />
+
+						<ImageView
+							android:layout_width="match_parent"
+							android:layout_height="0dp"
+							android:layout_weight="1"
+							android:scaleType="fitXY"
+							android:src="@drawable/sleep" />
+					</LinearLayout>
+				</androidx.cardview.widget.CardView>
 			</LinearLayout>
+
 
 		</LinearLayout>
 	</ScrollView>
@@ -437,34 +537,42 @@
 		android:paddingVertical="28dp">
 
 		<ImageView
-			android:id="@+id/rowsxmfom8m9"
+			android:id="@+id/iconHome"
 			android:layout_width="24dp"
 			android:layout_height="31dp"
+			android:clickable="true"
+			android:focusable="true"
 			android:layout_marginEnd="95dp"
 			android:scaleType="fitXY"
 			android:src="@mipmap/ic_launcher" />
 
 		<ImageView
-			android:id="@+id/r6o3g3kmue9p"
+			android:id="@+id/iconWorkOut"
 			android:layout_width="19dp"
 			android:layout_height="19dp"
+			android:clickable="true"
+			android:focusable="true"
 			android:layout_marginEnd="95dp"
 			android:scaleType="fitXY"
 			android:src="@mipmap/ic_launcher" />
 
 		<ImageView
-			android:id="@+id/rcsf7132kocp"
+			android:id="@+id/iconCamera"
 			android:layout_width="18dp"
 			android:layout_height="16dp"
+			android:clickable="true"
+			android:focusable="true"
 			android:layout_marginVertical="3dp"
 			android:layout_marginEnd="75dp"
 			android:scaleType="fitXY"
 			android:src="@mipmap/ic_launcher" />
 
 		<ImageView
-			android:id="@+id/r87jxozk86sd"
+			android:id="@+id/iconProfile"
 			android:layout_width="14dp"
 			android:layout_height="18dp"
+			android:clickable="true"
+			android:focusable="true"
 			android:layout_marginHorizontal="4dp"
 			android:layout_marginVertical="2dp"
 			android:scaleType="fitXY"

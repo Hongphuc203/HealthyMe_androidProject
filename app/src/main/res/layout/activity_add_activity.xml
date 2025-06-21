@@ -1,0 +1,97 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cr16lr270c050f6eea4ce"
+    android:orientation="vertical"
+    android:paddingVertical="20dp">
+
+    <LinearLayout
+        android:id="@+id/btnBackAddActivity"
+        android:layout_width="37dp"
+        android:layout_height="38dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/cr14lr495c050f6eea4ce"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:paddingHorizontal="13dp"
+        android:paddingVertical="11dp"
+        tools:ignore="TouchTargetSizeCheck">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/rxqq26ubv85g"
+            android:layout_width="12dp"
+            android:layout_height="13dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/TodayTarget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/cr22lr495c050f6eea4ce"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Chọn hoạt động"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <!-- Loại hoạt động -->
+        <Spinner
+            android:id="@+id/spinnerActivityType"
+            android:layout_width="141dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="16dp"
+            android:entries="@array/activity_types" />
+
+        <!-- Nhập số lượng -->
+        <EditText
+            android:id="@+id/edtActivityValue"
+            android:layout_width="219dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:hint="Enter value"
+            android:inputType="number" />
+
+        <!-- Đơn vị -->
+        <TextView
+            android:id="@+id/txtActivityUnit"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="24dp"
+            android:text="Unit"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:textStyle="italic" />
+
+        <!-- Nút lưu -->
+        <Button
+            android:id="@+id/btnSaveActivity"
+            android:layout_width="113dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#8C3BE2"
+            android:padding="6dp"
+            android:paddingHorizontal="30dp"
+            android:paddingBottom="7dp"
+            android:text="Save Activity"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold"></Button>
+    </LinearLayout>
+</LinearLayout>

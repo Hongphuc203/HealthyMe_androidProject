@@ -47,6 +47,23 @@ public class LoginPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//        if (currentUser != null) {
+//            FirebaseFirestore.getInstance().collection("users")
+//                    .document(currentUser.getUid())
+//                    .get()
+//                    .addOnSuccessListener(doc -> {
+//                        if (doc.exists() && doc.contains("goal") && !doc.getString("goal").isEmpty()) {
+//                            startActivity(new Intent(LoginPage.this, home.class));
+//                        } else {
+//                            startActivity(new Intent(LoginPage.this, ChooseWorkOutType.class));
+//                        }
+//                        finish(); // không quay lại Login khi nhấn back
+//                    });
+//            return;
+//        }
+
         setContentView(R.layout.activity_login_page);
         btnLogin = findViewById(R.id.btnLogin);
         txtRegister = findViewById(R.id.txtRegister);
@@ -91,9 +108,11 @@ public class LoginPage extends AppCompatActivity {
             isPasswordVisible[0] = !isPasswordVisible[0];
         });
 
+        forgotPassword.setOnClickListener(v -> {
+                    startActivity(new Intent(this, ForgotPassword.class));
+                });
 
         // Sự kiện đăng nhập bằng email/password
-
         btnLogin.setOnClickListener(v -> {
             String email = edtEmail.getText().toString().trim();
             String password = edtPassword.getText().toString().trim();
@@ -116,28 +135,17 @@ public class LoginPage extends AppCompatActivity {
 
                             docRef.get().addOnSuccessListener(documentSnapshot -> {
                                 if (documentSnapshot.exists()) {
-                                    // Kiểm tra xem đã có đầy đủ thông tin chưa
-                                    String gender = documentSnapshot.getString("gender");
-                                    String birth = documentSnapshot.getString("birth");
-                                    String height = documentSnapshot.getString("goal");
-                                    String weight = documentSnapshot.getString("goal");
                                     String goal = documentSnapshot.getString("goal");
 
-                                    if (gender == null || gender.isEmpty() || birth == null || birth.isEmpty() || height == null || height.isEmpty() || weight == null || weight.isEmpty()) {
-                                        // Thiếu thông tin -> chuyển sang Register2
-                                        Intent intent = new Intent(LoginPage.this, Register2.class);
-                                        startActivity(intent);
-                                    } else if (goal == null || goal.isEmpty()) {
-                                        // Chưa chọn goal -> chuyển sang ChooseWorkOutType
-                                        Intent intent = new Intent(LoginPage.this, ChooseWorkOutType.class);
-                                        startActivity(intent);
+                                    if (goal != null && !goal.isEmpty()) {
+                                        // Nếu đã chọn goal → về trang home
+                                        startActivity(new Intent(LoginPage.this, home.class));
                                     } else {
-                                        // Nếu đã ầy đủ thông tin -> chuyển sang home
-                                        Intent intent = new Intent(LoginPage.this, home.class);
-                                        startActivity(intent);
+                                        // Nếu chưa chọn goal → sang ChooseWorkOutType
+                                        startActivity(new Intent(LoginPage.this, ChooseWorkOutType.class));
                                     }
                                 } else {
-                                    // Lần đầu → tạo document + chuyển Register2
+                                    // Nếu là lần đầu → tạo mới document → sang Register2
                                     Map<String, Object> userData = new HashMap<>();
                                     userData.put("fullName", user.getDisplayName());
                                     userData.put("email", user.getEmail());

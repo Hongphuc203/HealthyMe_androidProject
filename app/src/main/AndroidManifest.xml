@@ -6,6 +6,13 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -31,12 +38,47 @@
         <activity android:name=".Onboarding3" />
         <activity android:name=".Onboarding4" />
         <activity android:name=".LoginPage" />
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".ResetByEmail" />
+        <activity android:name=".ResetByPhone" />
+        <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".register" />
         <activity android:name=".Register2" />
         <activity android:name=".SuccessRegistration" />
         <activity android:name=".ChooseWorkOutType" />
         <activity android:name=".home" />
+        <activity android:name=".Notification" />
+        <activity android:name=".BMIDetailActivity" />
+        <activity android:name=".Work_Tracker" />
+        <activity android:name=".TakePhoto" />
+        <activity android:name=".Profile" />
+        <activity android:name=".ActivityTracker" />
+        <activity android:name=".SleepTracker" />
+        <activity android:name=".AddActivityActivity" />
+        <activity android:name=".WorkoutSchedule" />
+        <activity android:name=".WorkoutDetail1" />
+        <activity android:name=".WorkoutDetail2" />
+        <activity android:name=".AddWorkoutSchedule" />
+        <activity android:name=".CompareResult1" />
 
+        <!-- Khai báo AlarmActivity -->
+        <activity
+            android:name=".AlarmActivity"
+            android:exported="true"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar.Fullscreen">
+        </activity>
+        <receiver
+            android:name=".AlarmReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.project.ALARM_BEDTIME" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.example.project.ALARM_GETUP" />
+            </intent-filter>
+        </receiver>
 
     </application>
 

@@ -62,7 +62,7 @@
 								android:layout_height="match_parent"
 								android:orientation="vertical">
 								<LinearLayout
-									android:id="@+id/rcqxrwf8uuta"
+									android:id="@+id/btnBackWorkOutDetail1"
 									android:layout_width="wrap_content"
 									android:layout_height="wrap_content"
 									android:background="@drawable/cr8bf7f8f8"
@@ -83,24 +83,6 @@
 									android:layout_height="0dp"
 									android:layout_weight="1"
 								 />
-								<LinearLayout
-									android:id="@+id/rlqsy2h3wlmq"
-									android:layout_width="wrap_content"
-									android:layout_height="wrap_content"
-									android:background="@drawable/cr8bf7f8f8"
-									android:paddingVertical="14dp"
-									android:paddingHorizontal="11dp"
-									android:clickable="true"
-									android:focusable="true"
-									android:orientation="vertical">
-									<ImageView
-										android:id="@+id/ryfbd6uf90x"
-										android:layout_width="10dp"
-										android:layout_height="4dp"
-										android:src="@mipmap/ic_launcher"
-										android:scaleType="fitXY"
-									/>
-								</LinearLayout>
 							</LinearLayout>
 						</RelativeLayout>
 					</LinearLayout>
@@ -207,11 +189,11 @@
 						</LinearLayout>
 					</LinearLayout>
 					<LinearLayout
-						android:id="@+id/rcv4hrtchcmh"
+						android:id="@+id/ScheduleWorkout"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:gravity="center_vertical"
-						android:background="@drawable/cr16lr27000ff6600efff"
+						android:background="#3D91FF77"
 						android:paddingVertical="14dp"
 						android:paddingHorizontal="15dp"
 						android:layout_marginBottom="15dp"
@@ -247,20 +229,13 @@
 							android:layout_width="wrap_content"
 							android:text="5/27, 09:00 AM"
 						/>
-						<ImageView
-							android:id="@+id/ruydhbnmxeg"
-							android:layout_width="16dp"
-							android:layout_height="16dp"
-							android:src="@mipmap/ic_launcher"
-							android:scaleType="fitXY"
-						/>
 					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/rxrw67pln7b"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:gravity="center_vertical"
-						android:background="@drawable/cr16lr270c050f6eea4ce"
+						android:background="#FFE2E2"
 						android:paddingVertical="14dp"
 						android:paddingHorizontal="15dp"
 						android:layout_marginBottom="30dp"
@@ -303,13 +278,6 @@
 							android:layout_height="wrap_content"
 							android:layout_width="wrap_content"
 							android:text="Beginner"
-						/>
-						<ImageView
-							android:id="@+id/ri7gddejvk2l"
-							android:layout_width="16dp"
-							android:layout_height="16dp"
-							android:src="@mipmap/ic_launcher"
-							android:scaleType="fitXY"
 						/>
 					</LinearLayout>
 					<LinearLayout
@@ -444,24 +412,25 @@
 								android:clipChildren="false"
 								android:clipToPadding="false"
 								android:orientation="vertical">
+
 								<LinearLayout
 									android:id="@+id/r48p8x955rye"
-									android:layout_width="wrap_content"
+									android:layout_width="match_parent"
 									android:layout_height="wrap_content"
-									android:background="@drawable/cr12bf7f8f8"
-									android:paddingVertical="27dp"
-									android:paddingLeft="52dp"
 									android:layout_marginBottom="10dp"
+									android:background="@drawable/cr12bf7f8f8"
 									android:clipChildren="false"
 									android:clipToPadding="false"
-									android:orientation="vertical">
+									android:orientation="vertical"
+									android:paddingVertical="27dp"
+									android:paddingLeft="52dp">
+
 									<ImageView
 										android:id="@+id/riw5dnfnfc1c"
-										android:layout_width="3dp"
+										android:layout_width="16dp"
 										android:layout_height="75dp"
-										android:src="@mipmap/ic_launcher"
 										android:scaleType="fitXY"
-									/>
+										android:src="@mipmap/ic_launcher" />
 								</LinearLayout>
 								<TextView
 									android:id="@+id/rdx9wi6kct06"
@@ -597,7 +566,7 @@
 										android:orientation="vertical">
 									</LinearLayout>
 									<ImageView
-										android:id="@+id/rpoobj1zegkf"
+										android:id="@+id/btn1"
 										android:layout_width="24dp"
 										android:layout_height="24dp"
 										android:src="@mipmap/ic_launcher"
@@ -658,7 +627,7 @@
 										android:orientation="vertical">
 									</LinearLayout>
 									<ImageView
-										android:id="@+id/rz1dnz4kccye"
+										android:id="@+id/btn2"
 										android:layout_width="24dp"
 										android:layout_height="24dp"
 										android:src="@mipmap/ic_launcher"
@@ -719,7 +688,7 @@
 										android:orientation="vertical">
 									</LinearLayout>
 									<ImageView
-										android:id="@+id/r7afel534s9"
+										android:id="@+id/btn3"
 										android:layout_width="24dp"
 										android:layout_height="24dp"
 										android:src="@mipmap/ic_launcher"
@@ -780,7 +749,7 @@
 										android:orientation="vertical">
 									</LinearLayout>
 									<ImageView
-										android:id="@+id/roy427r9yst"
+										android:id="@+id/btn4"
 										android:layout_width="24dp"
 										android:layout_height="24dp"
 										android:src="@mipmap/ic_launcher"
@@ -841,7 +810,7 @@
 										android:orientation="vertical">
 									</LinearLayout>
 									<ImageView
-										android:id="@+id/rm6vcq2yfkc"
+										android:id="@+id/btn5"
 										android:layout_width="24dp"
 										android:layout_height="24dp"
 										android:src="@mipmap/ic_launcher"
@@ -901,7 +870,7 @@
 										android:orientation="vertical">
 									</LinearLayout>
 									<ImageView
-										android:id="@+id/rrit8bbcw4x"
+										android:id="@+id/btn6"
 										android:layout_width="24dp"
 										android:layout_height="24dp"
 										android:src="@mipmap/ic_launcher"
@@ -967,7 +936,7 @@
 								/>
 							</LinearLayout>
 							<ImageView
-								android:id="@+id/rp09suby0kxe"
+								android:id="@+id/btn7"
 								android:layout_width="24dp"
 								android:layout_height="24dp"
 								android:src="@mipmap/ic_launcher"
@@ -1028,7 +997,7 @@
 								android:orientation="vertical">
 							</LinearLayout>
 							<ImageView
-								android:id="@+id/rbjm3lf4aw2j"
+								android:id="@+id/btn8"
 								android:layout_width="24dp"
 								android:layout_height="24dp"
 								android:src="@mipmap/ic_launcher"
@@ -1036,7 +1005,7 @@
 							/>
 						</LinearLayout>
 						<LinearLayout
-							android:id="@+id/rbofjqzap89s"
+							android:id="@+id/btnStartWorkOut"
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
 							android:gravity="center_horizontal"

@@ -1,31 +1,46 @@
 package com.example.project;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bumptech.glide.Glide;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class WorkoutSchedule extends AppCompatActivity {
+
     private View dimView;
     private LinearLayout openBox, mainContent;
-    private EditText job;
     private RecyclerView rvDays;
     private DayAdapter adapter;
+    private TextView popupTitle, popupDateTime;
+
+    private WorkOutTask currentTask;
+    private EditText currentTaskView;
+    private String selectedDate;
 
     private final int[] currentYearMonth = {
             Calendar.getInstance().get(Calendar.YEAR),
-            Calendar.getInstance().get(Calendar.MONTH) + 1 // Tháng bắt đầu từ 0
+            Calendar.getInstance().get(Calendar.MONTH) + 1
     };
+
+    private ActivityResultLauncher<Intent> launcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,52 +50,64 @@ public class WorkoutSchedule extends AppCompatActivity {
         dimView     = findViewById(R.id.dimView);
         openBox     = findViewById(R.id.OpenBox);
         mainContent = findViewById(R.id.main);
-        job         = findViewById(R.id.Task);
+        popupTitle = findViewById(R.id.textPopupTitle);
+        popupDateTime = findViewById(R.id.textPopupDateTime);
 
         dimView.setVisibility(View.GONE);
         openBox.setVisibility(View.GONE);
 
-        job.setOnClickListener(v -> showOverlay());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        selectedDate = sdf.format(new Date());
+
         findViewById(R.id.ButtonDone).setOnClickListener(v -> hideOverlay());
         findViewById(R.id.CloseButton).setOnClickListener(v -> hideOverlay());
-        // Load ảnh
-        ImageView img1 = findViewById(R.id.r2jkkf70a1av);
-        ImageView img2 = findViewById(R.id.rgexp1sssio);
-        ImageView img3 = findViewById(R.id.PreviousMonth);
-        ImageView img4 = findViewById(R.id.NextMonth);
-        ImageView img6 = findViewById(R.id.rmlhoqy5qx6o);
-        Glide.with(this).load("https://...").into((ImageView) findViewById(R.id.r2jkkf70a1av));
-        ImageView CloseButton = findViewById(R.id.CloseButton);
-        Glide.with(this)
-                .load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/0076bbf7-f5e7-43d1-9f88-3b8715b9f5a0")
-                .into(CloseButton);
 
-        ImageView image2 = findViewById(R.id.r6ikq5xj2yo7);
-        Glide.with(this)
-                .load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/3b0f53cd-ab06-4536-90a7-cdf894898bc9")
-                .into(image2);
+        findViewById(R.id.MarkDone).setOnClickListener(v -> {
+            if (currentTask != null && !currentTask.isDone()) {
+                int id = currentTask.getId();
+                new WorkoutRepository(this).updateDoneStatus(id, true);
 
-        ImageView image3 = findViewById(R.id.rquci630nf9);
-        Glide.with(this)
-                .load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/e403aafc-5317-4029-8832-2914a30e4868")
-                .into(image3);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/83ad3848-6fa0-472b-8460-2e303af8bb40").into(img1);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a939bd76-db95-4c69-b547-2e1ad84f83e0").into(img2);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/883216c6-73df-499e-894f-fa662f10a18a").into(img3);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9499edbd-d39c-4326-9637-a9cf20ae3a1c").into(img4);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/0ffa9055-e6cb-4d03-a58f-453d8b5433c1").into(img6);
+                // Cập nhật trạng thái và giao diện ngay lập tức
+                currentTask.setDone(true);
+                if (currentTaskView != null) {
+                    currentTaskView.setBackgroundResource(R.drawable.bg_task_done);
+                    currentTaskView.setTextColor(Color.parseColor("#A5A3AF"));
+                }
 
-        // ... các ảnh khác tương tự
+                // Làm mới biến
+                currentTask = null;
+                currentTaskView = null;
 
-        // RecyclerView ngày
+                // Nếu bạn vẫn muốn refresh toàn bộ timeline:
+                // populateTimeline(); (có thể bỏ)
+                hideOverlay();
+            } else {
+                hideOverlay();
+            }
+        });
+
+        launcher = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                    if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                        WorkOutTask task = (WorkOutTask) result.getData().getSerializableExtra("newTask");
+                        populateTimeline();
+                    }
+                }
+        );
+
         rvDays = findViewById(R.id.rvDays);
         rvDays.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         adapter = new DayAdapter(generateDaysForMonth(currentYearMonth[0], currentYearMonth[1]), date -> {
-            // xử lý khi chọn ngày
+            SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            selectedDate = sdfDate.format(date.getTime());
+            adapter.setSelectedDate(selectedDate);
+            adapter.notifyDataSetChanged();
+            populateTimeline();
         });
+        adapter.setSelectedDate(selectedDate);
         rvDays.setAdapter(adapter);
 
-        // Prev / Next
         findViewById(R.id.PreviousMonth).setOnClickListener(v -> {
             if (currentYearMonth[1] == 1) {
                 currentYearMonth[0]--;
@@ -98,6 +125,12 @@ public class WorkoutSchedule extends AppCompatActivity {
         });
 
         reloadMonth();
+        populateTimeline();
+
+        findViewById(R.id.ButtonAdd).setOnClickListener(v -> {
+            Intent intent = new Intent(this, AddWorkoutSchedule.class);
+            launcher.launch(intent);
+        });
     }
 
     private void showOverlay() {
@@ -136,5 +169,107 @@ public class WorkoutSchedule extends AppCompatActivity {
 
         List<Calendar> days = generateDaysForMonth(currentYearMonth[0], currentYearMonth[1]);
         adapter.setDays(days);
+    }
+
+    private void populateTimeline() {
+        LinearLayout timelineContainer = findViewById(R.id.timelineContainer);
+        timelineContainer.removeAllViews();
+
+        for (int hour = 0; hour < 24; hour++) {
+            TextView label = new TextView(this);
+            String ampm = (hour < 12) ? "AM" : "PM";
+            int displayHour = (hour % 12 == 0) ? 12 : (hour % 12);
+            String labelText = String.format(Locale.getDefault(), "%02d:00 %s", displayHour, ampm);
+
+            label.setText(labelText);
+            label.setTextSize(13f);
+            label.setTextColor(Color.parseColor("#B6B4C1"));
+
+            LinearLayout.LayoutParams labelParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            labelParams.setMargins(dpToPx(40), dpToPx(24), 0, dpToPx(6));
+            label.setLayoutParams(labelParams);
+
+            View divider = new View(this);
+            LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    1
+            );
+            dividerParams.setMargins(dpToPx(30), 0, dpToPx(30), 0);
+            divider.setLayoutParams(dividerParams);
+            divider.setBackgroundColor(Color.parseColor("#E0E0E0"));
+
+            timelineContainer.addView(label);
+            timelineContainer.addView(divider);
+        }
+
+        WorkoutRepository repo = new WorkoutRepository(this);
+        List<WorkOutTask> tasks = repo.getWorkoutByDate(selectedDate);
+        for (WorkOutTask task : tasks) {
+            addTaskToTimeline(task);
+        }
+    }
+
+    private int extractHour(String timeString) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mma", Locale.US);
+            Date date = sdf.parse(timeString.replace(" ", "").toUpperCase());
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            return calendar.get(Calendar.HOUR_OF_DAY);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    private void addTaskToTimeline(WorkOutTask task) {
+        LinearLayout timelineContainer = findViewById(R.id.timelineContainer);
+
+        EditText taskView = new EditText(this);
+        taskView.setText(task.getTitle() + ", " + task.getTime());
+        taskView.setTextSize(12f);
+        taskView.setTextColor(task.isDone() ? Color.parseColor("#A5A3AF") : Color.WHITE);
+        taskView.setHint("Ab Workout, 7:30am");
+        taskView.setInputType(InputType.TYPE_CLASS_TEXT);
+        taskView.setBackgroundResource(task.isDone() ? R.drawable.bg_task_done : R.drawable.cr50lr495c050f6eea4ce);
+        taskView.setFocusable(false);
+        taskView.setPadding(dpToPx(15), dpToPx(9), dpToPx(15), dpToPx(9));
+
+        taskView.setOnClickListener(v -> {
+            showOverlay();
+            popupTitle.setText(task.getTitle() + " | " + task.getTime());
+            popupDateTime.setText(task.getDate() + " | " + task.getTime());
+            currentTask = task;
+            currentTaskView = taskView;
+        });
+
+        int insertIndex = findInsertPosition(task);
+        timelineContainer.addView(taskView, insertIndex);
+    }
+
+    private int findInsertPosition(WorkOutTask task) {
+        int taskHour = extractHour(task.getTime());
+        LinearLayout timelineContainer = findViewById(R.id.timelineContainer);
+
+        for (int i = 0; i < timelineContainer.getChildCount(); i++) {
+            View child = timelineContainer.getChildAt(i);
+            if (child instanceof TextView) {
+                String text = ((TextView) child).getText().toString();
+                if (text.contains(":")) {
+                    int hourInView = extractHour(text);
+                    if (taskHour < hourInView) {
+                        return i;
+                    }
+                }
+            }
+        }
+        return timelineContainer.getChildCount();
+    }
+
+    private int dpToPx(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round(dp * density);
     }
 }

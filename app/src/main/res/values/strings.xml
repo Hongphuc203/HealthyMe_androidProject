@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">project</string>
     <string name="default_web_client_id">117595543674-lkfo1345dbr8kai6hbe11gsp78o5fgr5.apps.googleusercontent.com</string>
+    <string-array name="activity_types">
+        <item>WATER</item>
+        <item>WALK</item>
+    </string-array>
+    <string-array name="chart_filters">
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </string-array>
+    <string-array name="workout_types">
+        <item>FullBody Workout</item>
+        <item>LowBody Workout</item>
+        <item>AB Workout</item>
+    </string-array>
+    <string-array name="difficulty_levels">
+        <item>Beginner</item>
+        <item>Professional</item>
+    </string-array>
 </resources>

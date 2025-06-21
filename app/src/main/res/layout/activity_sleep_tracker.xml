@@ -1,4 +1,5 @@
-<LinearLayout 
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,32 +9,37 @@
 	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
-	<ScrollView 
-		android:clipChildren="false"
-		android:clipToPadding="false"
+
+	<ScrollView
 		android:id="@+id/r9dxoka28sbp"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
 		android:layout_weight="1"
-		android:background="@drawable/cr40bffffff">
+		android:background="@drawable/cr40bffffff"
+		android:clipChildren="false"
+		android:clipToPadding="false">
+
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
+			android:orientation="vertical"
 			android:clipChildren="false"
-			android:clipToPadding="false"
-			android:orientation="vertical">
+			android:clipToPadding="false">
+
+			<!-- Header “Sleep Tracker” -->
 			<LinearLayout
 				android:id="@+id/rr9j7tuvr9p"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:orientation="horizontal"
 				android:gravity="center_vertical"
 				android:layout_marginTop="40dp"
 				android:layout_marginBottom="30dp"
-				android:layout_marginHorizontal="30dp"
-				android:orientation="horizontal">
+				android:layout_marginHorizontal="30dp">
 
+				<!-- Back button container -->
 				<LinearLayout
-					android:id="@+id/rxj656fkzt2p"
+					android:id="@+id/btnBackSleepTracker"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_marginEnd="90dp"
@@ -43,7 +49,6 @@
 					android:orientation="vertical"
 					android:paddingHorizontal="13dp"
 					android:paddingVertical="11dp">
-
 					<ImageView
 						android:id="@+id/rce5x3iprbul"
 						android:layout_width="4dp"
@@ -52,6 +57,7 @@
 						android:src="@mipmap/ic_launcher" />
 				</LinearLayout>
 
+				<!-- Title “Sleep Tracker” -->
 				<TextView
 					android:id="@+id/rnl193sf2a9"
 					android:layout_width="wrap_content"
@@ -62,6 +68,8 @@
 					android:textColor="#1D1517"
 					android:textSize="16sp"
 					android:textStyle="bold" />
+
+				<!-- More options button -->
 				<LinearLayout
 					android:id="@+id/ru9os59brqco"
 					android:layout_width="wrap_content"
@@ -77,538 +85,240 @@
 						android:layout_width="10dp"
 						android:layout_height="4dp"
 						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
+						android:scaleType="fitXY" />
 				</LinearLayout>
 			</LinearLayout>
-			<LinearLayout
-				android:id="@+id/rekcx24o23dw"
+
+			<!-- LineChart -->
+			<com.github.mikephil.charting.charts.LineChart
+				android:id="@+id/lineChart"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginBottom="30dp"
-				android:layout_marginHorizontal="35dp"
-				android:clipChildren="false"
-				android:clipToPadding="false"
-				android:orientation="vertical">
-				<LinearLayout
-					android:id="@+id/ry2me824zgm"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:gravity="center_vertical"
-					android:clipChildren="false"
-					android:clipToPadding="false"
-					android:orientation="horizontal">
-					<LinearLayout
-						android:id="@+id/rtgcvqon67p"
-						android:layout_width="0dp"
-						android:layout_height="wrap_content"
-						android:layout_weight="1"
-						android:layout_marginEnd="4dp"
-						android:clipChildren="false"
-						android:clipToPadding="false"
-						android:orientation="vertical">
-						<LinearLayout
-							android:id="@+id/rl6fzhkdokf"
-							android:layout_width="match_parent"
-							android:layout_height="1dp"
-							android:background="#A5A3AF"
-							android:layout_marginBottom="27dp"
-							android:layout_marginHorizontal="1dp"
-							android:orientation="vertical">
-						</LinearLayout>
-						<RelativeLayout
-							android:id="@+id/rnjqgny55loi"
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content"
-							android:clipChildren="false"
-							android:clipToPadding="false"
-							>
-							<LinearLayout
-								android:layout_width="match_parent"
-								android:layout_height="match_parent"
-								android:clipChildren="false"
-								android:clipToPadding="false"
-								android:orientation="vertical">
-								<ImageView
-									android:id="@+id/rmcunlcse5go"
-									android:layout_width="match_parent"
-									android:layout_height="109dp"
-									android:src="@mipmap/ic_launcher"
-									android:scaleType="fitXY"
-								/>
-							</LinearLayout>
-							<LinearLayout
-								android:id="@+id/ru4fkq9e2xhe"
-								android:layout_marginTop="-9dp"
-								android:layout_marginEnd="46dp"
-								android:layout_alignParentRight="true"
-								android:layout_width="86dp"
-								android:layout_height="wrap_content"
-								android:background="@drawable/cr8bffffff"
-								android:paddingTop="10dp"
-								android:paddingBottom="11dp"
-								android:paddingHorizontal="10dp"
-								android:elevation="40dp"
-								android:clipChildren="false"
-								android:clipToPadding="false"
-								android:orientation="vertical">
-								<TextView
-									android:id="@+id/r85ezjm75qk6"
-									android:textColor="#41D641"
-									android:textSize="10sp"
-									android:layout_height="wrap_content"
-									android:layout_width="wrap_content"
-									android:text="43% increase"
-								/>
-							</LinearLayout>
-							<ImageView
-								android:id="@+id/rhqhjn0fvncn"
-								android:layout_width="7dp"
-								android:layout_height="83dp"
-								android:layout_marginBottom="-9dp"
-								android:layout_marginEnd="85dp"
-								android:layout_alignParentBottom="true"
-								android:layout_alignParentRight="true"
-								android:src="@mipmap/ic_launcher"
-								android:scaleType="fitXY"
-							/>
-						</RelativeLayout>
-						<LinearLayout
-							android:id="@+id/rjlw9y7p92kh"
-							android:layout_width="match_parent"
-							android:layout_height="1dp"
-							android:background="#A5A3AF"
-							android:layout_marginHorizontal="1dp"
-							android:clipChildren="false"
-							android:clipToPadding="false"
-							android:orientation="vertical">
-						</LinearLayout>
-					</LinearLayout>
-					<LinearLayout
-						android:id="@+id/rl8a34y1n7zn"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:gravity="center_horizontal"
-						android:clipChildren="false"
-						android:clipToPadding="false"
-						android:orientation="vertical">
-						<TextView
-							android:id="@+id/rzmjqtlf528m"
-							android:textColor="#B6B4C1"
-							android:textSize="10sp"
-							android:layout_marginBottom="12dp"
-							android:layout_height="wrap_content"
-							android:layout_width="wrap_content"
-							android:text="10h"
-						/>
-						<TextView
-							android:id="@+id/ron2s7wql6i"
-							android:textColor="#00FF66"
-							android:textSize="10sp"
-							android:textStyle="bold"
-							android:layout_marginBottom="11dp"
-							android:layout_height="wrap_content"
-							android:layout_width="wrap_content"
-							android:text="8h"
-						/>
-						<TextView
-							android:id="@+id/rn71lef7326"
-							android:textColor="#B6B4C1"
-							android:textSize="10sp"
-							android:layout_marginBottom="12dp"
-							android:layout_height="wrap_content"
-							android:layout_width="wrap_content"
-							android:text="6h"
-						/>
-						<TextView
-							android:id="@+id/rduku9pbvpun"
-							android:textColor="#B6B4C1"
-							android:textSize="10sp"
-							android:layout_marginBottom="11dp"
-							android:layout_height="wrap_content"
-							android:layout_width="wrap_content"
-							android:text="4h"
-						/>
-						<TextView
-							android:id="@+id/rt149hi9k1j"
-							android:textColor="#B6B4C1"
-							android:textSize="10sp"
-							android:layout_marginBottom="12dp"
-							android:layout_height="wrap_content"
-							android:layout_width="wrap_content"
-							android:text="2h"
-						/>
-						<TextView
-							android:id="@+id/ri86m74psjgg"
-							android:textColor="#B6B4C1"
-							android:textSize="10sp"
-							android:layout_height="wrap_content"
-							android:layout_width="wrap_content"
-							android:text="0h"
-						/>
-					</LinearLayout>
-				</LinearLayout>
-				<LinearLayout
-					android:id="@+id/rv1raojjxau8"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:gravity="center_vertical"
-					android:paddingRight="2dp"
-					android:layout_marginStart="5dp"
-					android:clipChildren="false"
-					android:clipToPadding="false"
-					android:orientation="horizontal">
-					<TextView
-						android:id="@+id/r37jaxm36puz"
-						android:textColor="#B6B4C1"
-						android:textSize="12sp"
-						android:layout_marginEnd="23dp"
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:text="Sun"
-					/>
-					<TextView
-						android:id="@+id/rwtt3idfg2r"
-						android:textColor="#B6B4C1"
-						android:textSize="12sp"
-						android:layout_marginEnd="23dp"
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:text="Mon"
-					/>
-					<TextView
-						android:id="@+id/rc4hrrmw4j0t"
-						android:textColor="#B6B4C1"
-						android:textSize="12sp"
-						android:layout_marginEnd="22dp"
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:text="Tue"
-					/>
-					<TextView
-						android:id="@+id/rn8df652z0jg"
-						android:textColor="#B6B4C1"
-						android:textSize="12sp"
-						android:layout_marginEnd="22dp"
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:text="Wed"
-					/>
-					<TextView
-						android:id="@+id/r0qk7f1d02r2"
-						android:textColor="#00FF66"
-						android:textSize="12sp"
-						android:textStyle="bold"
-						android:layout_marginEnd="20dp"
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:text="Thu"
-					/>
-					<TextView
-						android:id="@+id/rd9geb4bhn0j"
-						android:textColor="#B6B4C1"
-						android:textSize="12sp"
-						android:layout_marginEnd="23dp"
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:text="Fri"
-					/>
-					<TextView
-						android:id="@+id/rcgh25egwsek"
-						android:textColor="#B6B4C1"
-						android:textSize="12sp"
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:text="Sat"
-					/>
-				</LinearLayout>
-			</LinearLayout>
+				android:layout_height="250dp"
+				android:layout_marginVertical="30dp"
+				android:layout_marginHorizontal="10dp"/>
+			<!-- Last Night Sleep Card -->
 			<LinearLayout
 				android:id="@+id/r5sc0wwoleow"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="30dp"
+				android:layout_marginBottom="30dp"
 				android:background="@drawable/cr22lr49500ff6600efff"
 				android:paddingTop="20dp"
-				android:layout_marginBottom="30dp"
-				android:layout_marginHorizontal="30dp"
 				android:elevation="22dp"
 				android:clipChildren="false"
 				android:clipToPadding="false"
 				android:orientation="vertical">
+
 				<LinearLayout
 					android:id="@+id/rrahc02g9p2c"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginBottom="3dp"
 					android:layout_marginStart="20dp"
+					android:layout_marginBottom="3dp"
+					android:orientation="vertical"
 					android:clipChildren="false"
-					android:clipToPadding="false"
-					android:orientation="vertical">
+					android:clipToPadding="false">
 					<TextView
 						android:id="@+id/rv2ud35hbpy"
-						android:textColor="#FFFFFF"
-						android:textSize="14sp"
-						android:textStyle="bold"
-						android:layout_marginBottom="5dp"
-						android:layout_height="wrap_content"
 						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
 						android:text="Last Night Sleep"
-					/>
-					<TextView
-						android:id="@+id/rvzqfipsoap"
 						android:textColor="#FFFFFF"
 						android:textSize="14sp"
 						android:textStyle="bold"
-						android:layout_height="wrap_content"
+						android:layout_marginBottom="5dp"/>
+					<TextView
+						android:id="@+id/HoursOfSleepLastNight"
 						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
 						android:text="8h 20m"
-					/>
+						android:textColor="#FFFFFF"
+						android:textSize="14sp"
+						android:textStyle="bold"/>
 				</LinearLayout>
+
 				<ImageView
 					android:id="@+id/rk08uxx6kojg"
 					android:layout_width="match_parent"
 					android:layout_height="78dp"
 					android:src="@mipmap/ic_launcher"
-					android:scaleType="fitXY"
-				/>
+					android:scaleType="fitXY"/>
 			</LinearLayout>
-			<LinearLayout
-				android:id="@+id/rgtwaaynppag"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:gravity="center_vertical"
-				android:background="@drawable/cr16lr495c050f6eea4ce"
-				android:paddingVertical="15dp"
-				android:paddingHorizontal="20dp"
-				android:layout_marginBottom="30dp"
-				android:layout_marginHorizontal="30dp"
-				android:clipChildren="false"
-				android:clipToPadding="false"
-				android:orientation="horizontal">
-				<EditText
-					android:inputType="text"
-					android:hint="Daily Sleep Schedule"
-					android:background="@null"
-					android:id="@+id/rpq5eze1imbr"
-					android:textColor="#1D1517"
-					android:textSize="14sp"
-					android:textStyle="bold"
-					android:layout_width="0dp"
-					android:layout_height="wrap_content"
-					android:layout_weight="1"
-					android:paddingVertical="3dp"
-				/>
-				<LinearLayout
-					android:id="@+id/r95s5ey0j2k6"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:background="@drawable/cr50lr495cc8fed6b50f6"
-					android:paddingTop="5dp"
-					android:paddingBottom="6dp"
-					android:paddingHorizontal="15dp"
-					android:clipChildren="false"
-					android:clipToPadding="false"
-					android:orientation="vertical">
-					<TextView
-						android:id="@+id/rluyjhbq751b"
-						android:textColor="#FFFFFF"
-						android:textSize="12sp"
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:text="Check"
-					/>
-				</LinearLayout>
-			</LinearLayout>
+
+			<!-- Daily Sleep Schedule -->
+
+			<!-- Today Schedule Header -->
 			<LinearLayout
 				android:id="@+id/rb9u99gkwoe"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginBottom="40dp"
 				android:layout_marginHorizontal="30dp"
+				android:layout_marginBottom="40dp"
+				android:orientation="vertical"
 				android:clipChildren="false"
-				android:clipToPadding="false"
-				android:orientation="vertical">
+				android:clipToPadding="false">
 				<TextView
 					android:id="@+id/res3h99z99je"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="16dp"
+					android:text="Today Schedule"
 					android:textColor="#1D1517"
 					android:textSize="16sp"
-					android:textStyle="bold"
-					android:layout_marginBottom="16dp"
-					android:layout_height="wrap_content"
-					android:layout_width="wrap_content"
-					android:text="Today Schedule"
-				/>
+					android:textStyle="bold"/>
+
+				<!-- Bedtime Row -->
 				<LinearLayout
-					android:id="@+id/ryhvwr1mvdyc"
+					android:id="@+id/containerTodaySchedule"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:gravity="center_vertical"
-					android:background="@drawable/cr20bffffff"
-					android:padding="15dp"
 					android:layout_marginBottom="15dp"
+					android:background="@drawable/cr20bffffff"
+					android:orientation="horizontal"
+					android:gravity="center_vertical"
 					android:elevation="40dp"
+					android:padding="10dp"
 					android:clipChildren="false"
-					android:clipToPadding="false"
-					android:orientation="horizontal">
+					android:clipToPadding="false">
+
 					<ImageView
 						android:id="@+id/rsumk43d3fe"
 						android:layout_width="29dp"
 						android:layout_height="29dp"
-						android:layout_marginBottom="1dp"
 						android:layout_marginEnd="15dp"
 						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
+						android:scaleType="fitXY"/>
+
 					<LinearLayout
 						android:id="@+id/rkzh9oplurbp"
 						android:layout_width="0dp"
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
 						android:layout_marginEnd="12dp"
+						android:orientation="vertical"
 						android:clipChildren="false"
-						android:clipToPadding="false"
-						android:orientation="vertical">
+						android:clipToPadding="false">
+
 						<TextView
-							android:id="@+id/rjr2myyitjp"
+							android:id="@+id/TimeToSleep"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginBottom="5dp"
+							android:text="Bedtime, 09:00pm"
 							android:textColor="#1D1517"
 							android:textSize="14sp"
-							android:textStyle="bold"
-							android:layout_marginBottom="5dp"
-							android:layout_height="wrap_content"
-							android:layout_width="wrap_content"
-							android:text="Bedtime, 09:00pm"
-						/>
+							android:textStyle="bold"/>
+
 						<TextView
-							android:id="@+id/rjfl4x6ee7q"
-							android:textColor="#B6B4C1"
-							android:textSize="14sp"
-							android:layout_height="wrap_content"
+							android:id="@+id/TimeRemainingToSleep"
 							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
 							android:layout_weight="1"
 							android:text="in 6hours 22minutes"
-						/>
+							android:textColor="#B6B4C1"
+							android:textSize="14sp"/>
 					</LinearLayout>
+
 					<LinearLayout
 						android:id="@+id/r4t9oo2m7c3c"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
+						android:orientation="vertical"
 						android:gravity="end"
 						android:clipChildren="false"
-						android:clipToPadding="false"
-						android:orientation="vertical">
+						android:clipToPadding="false">
 						<ImageView
 							android:id="@+id/rz2aquca7tfj"
 							android:layout_width="14dp"
 							android:layout_height="14dp"
 							android:layout_marginBottom="20dp"
 							android:src="@mipmap/ic_launcher"
-							android:scaleType="fitXY"
-						/>
-						<LinearLayout
-							android:id="@+id/r9ojreooj39w"
+							android:scaleType="fitXY"/>
+
+						<com.google.android.material.switchmaterial.SwitchMaterial
+							android:id="@+id/switchBedtime"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:background="@drawable/cr50lr49500ff6600efff"
-							android:paddingVertical="5dp"
-							android:paddingLeft="25dp"
-							android:paddingRight="5dp"
-							android:clipChildren="false"
-							android:clipToPadding="false"
-							android:orientation="vertical">
-							<com.google.android.material.imageview.ShapeableImageView
-								android:id="@+id/rcdh7498hbs6"
-								android:layout_width="14dp"
-								android:layout_height="14dp"
-								android:src="@mipmap/ic_launcher"
-								android:scaleType="fitXY"
-							/>
-						</LinearLayout>
+							android:padding="0dp"
+							android:showText="false"
+							android:thumbTint="@color/white" />
 					</LinearLayout>
 				</LinearLayout>
+
+				<!-- Alarm Row -->
 				<LinearLayout
 					android:id="@+id/r9fvvqcb6l88"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:orientation="horizontal"
 					android:gravity="center_vertical"
 					android:background="@drawable/cr20bffffff"
-					android:padding="15dp"
 					android:elevation="40dp"
 					android:clipChildren="false"
 					android:clipToPadding="false"
-					android:orientation="horizontal">
+					android:padding="10dp">
+
 					<ImageView
 						android:id="@+id/r83wjkwg0gqa"
 						android:layout_width="27dp"
 						android:layout_height="30dp"
-						android:layout_marginStart="1dp"
 						android:layout_marginEnd="16dp"
 						android:src="@mipmap/ic_launcher"
-						android:scaleType="fitXY"
-					/>
+						android:scaleType="fitXY"/>
+
 					<LinearLayout
 						android:id="@+id/rk8rw1jz8efg"
 						android:layout_width="0dp"
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
 						android:layout_marginEnd="12dp"
+						android:orientation="vertical"
 						android:clipChildren="false"
-						android:clipToPadding="false"
-						android:orientation="vertical">
+						android:clipToPadding="false">
+
 						<TextView
-							android:id="@+id/rz9sr49ukbu"
+							android:id="@+id/TimeToGetUp"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginBottom="5dp"
+							android:text="Alarm, 05:10am"
 							android:textColor="#1D1517"
 							android:textSize="14sp"
-							android:textStyle="bold"
-							android:layout_marginBottom="5dp"
-							android:layout_height="wrap_content"
-							android:layout_width="wrap_content"
-							android:text="Alarm, 05:10am"
-						/>
+							android:textStyle="bold"/>
+
 						<TextView
-							android:id="@+id/rept120nqg9f"
-							android:textColor="#B6B4C1"
-							android:textSize="14sp"
-							android:layout_height="wrap_content"
+							android:id="@+id/TimeRemainingGetUp"
 							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
 							android:layout_weight="1"
 							android:text="in 14hours 30minutes"
-						/>
+							android:textColor="#B6B4C1"
+							android:textSize="14sp"/>
 					</LinearLayout>
+
 					<LinearLayout
 						android:id="@+id/r8wokcc7uhxg"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
+						android:orientation="vertical"
 						android:gravity="end"
 						android:clipChildren="false"
-						android:clipToPadding="false"
-						android:orientation="vertical">
+						android:clipToPadding="false">
 						<ImageView
 							android:id="@+id/re10l7j9kboj"
 							android:layout_width="14dp"
 							android:layout_height="14dp"
 							android:layout_marginBottom="20dp"
 							android:src="@mipmap/ic_launcher"
-							android:scaleType="fitXY"
-						/>
-						<LinearLayout
-							android:id="@+id/rb3v0kkc57iv"
+							android:scaleType="fitXY"/>
+						<com.google.android.material.switchmaterial.SwitchMaterial
+							android:id="@+id/switchAlarm"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:background="@drawable/cr50lr49500ff6600efff"
-							android:paddingVertical="5dp"
-							android:paddingLeft="25dp"
-							android:paddingRight="5dp"
-							android:clipChildren="false"
-							android:clipToPadding="false"
-							android:orientation="vertical">
-							<com.google.android.material.imageview.ShapeableImageView
-								android:id="@+id/r32l48hh0uzd"
-								android:layout_width="14dp"
-								android:layout_height="14dp"
-								android:src="@mipmap/ic_launcher"
-								android:scaleType="fitXY"
-							/>
-						</LinearLayout>
+							android:showText="false"
+							android:thumbTint="@color/white"
+							android:padding="0dp"/>
 					</LinearLayout>
 				</LinearLayout>
 			</LinearLayout>

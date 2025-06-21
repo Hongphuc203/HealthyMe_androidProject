@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -17,6 +18,8 @@ import java.util.Locale;
 
 public class DayAdapter extends RecyclerView.Adapter<DayAdapter.VH> {
     private List<Calendar> days = new ArrayList<>();
+    private String selectedDate = "";
+
     public DayAdapter(List<Calendar> days, OnDayClickListener listener) {
         this.days = days;
         this.listener = listener;
@@ -38,6 +41,10 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.VH> {
         listener = l;
     }
 
+    public void setSelectedDate(String date) {
+        selectedDate = date;
+    }
+
     @NonNull
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,17 +64,24 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.VH> {
         // Ngày trong tháng
         h.tvNumber.setText(String.valueOf(d.get(Calendar.DAY_OF_MONTH)));
 
-        // Kiểm tra hôm nay
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String thisDate = sdf.format(d.getTime());
+
+        boolean isSelected = thisDate.equals(selectedDate);
         boolean isToday = d.get(Calendar.YEAR) == today.get(Calendar.YEAR) &&
                 d.get(Calendar.MONTH) == today.get(Calendar.MONTH) &&
                 d.get(Calendar.DAY_OF_MONTH) == today.get(Calendar.DAY_OF_MONTH);
 
-        h.container.setBackgroundResource(isToday
-                ? R.drawable.cr10lr495c050f6eea4ce
-                : R.drawable.cr10bf7f8f8);
+        if (isSelected) {
+            h.container.setBackgroundResource(R.drawable.cr10_selected_day);
+        } else if (isToday) {
+            h.container.setBackgroundResource(R.drawable.cr10lr495c050f6eea4ce);
+        } else {
+            h.container.setBackgroundResource(R.drawable.cr10bf7f8f8);
+        }
 
         int textColor = ContextCompat.getColor(h.itemView.getContext(),
-                isToday ? R.color.white : R.color.gray_dark);
+                isSelected || isToday ? R.color.white : R.color.gray_dark);
         h.tvName.setTextColor(textColor);
         h.tvNumber.setTextColor(textColor);
 

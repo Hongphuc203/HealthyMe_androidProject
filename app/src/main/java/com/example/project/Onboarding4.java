@@ -1,6 +1,7 @@
 package com.example.project;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -27,6 +28,12 @@ public class Onboarding4 extends AppCompatActivity {
         btnNext4 = findViewById(R.id.btnNext4);
 
         btnNext4.setOnClickListener(v -> {
+
+            SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("isFirstTime", false);  // Lần sau sẽ không vào welcome nữa
+            editor.apply();
+
             Intent intent = new Intent(Onboarding4.this, LoginPage.class);
             startActivity(intent);
         });

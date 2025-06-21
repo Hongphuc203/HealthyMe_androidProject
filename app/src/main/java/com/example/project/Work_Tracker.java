@@ -1,16 +1,20 @@
 package com.example.project;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.view.LayoutInflater;
 import android.view.View;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.github.mikephil.charting.charts.LineChart;
@@ -25,92 +29,87 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Work_Tracker extends AppCompatActivity {
-    private String editTextValue1 = "";
+    private LinearLayout btnBackWorkOutTracker, btnCheckWorkOut, btnViewMoreFullbody, btnViewMoreLowebody, btnViewMoreAB;
     private static final String[] DAYS = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
-    private static final float[] VALUES = {20f, 45f, 30f, 55f, 75f, 90f, 60f};
+    private boolean isExpanded = false;
+    private TextView seeMoreText;
+    private LinearLayout workoutContainer;
+    private List<WorkoutItem> allWorkouts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_tracker);
-        LineChart chart = findViewById(R.id.lineChart);
-        setupChart(chart);
-        // ImageViews
-        ImageView image1 = findViewById(R.id.rmi23iviyo7k);
-        ImageView image5 = findViewById(R.id.rmtfige432zf);
-        ImageView image6 = findViewById(R.id.rksfzc3cg6oh);
-        ImageView image7 = findViewById(R.id.rccmblxkakjl);
-        ImageView image8 = findViewById(R.id.rfr5dt8c02qd);
-        ImageView image9 = findViewById(R.id.r5p3awsyp9a4);
-        ImageView image10 = findViewById(R.id.r0f7rk3mkiss);
-        ImageView image11 = findViewById(R.id.ro4fkwpv1pr9);
-        ImageView image12 = findViewById(R.id.r20dtmwwmxcj);
-        ImageView image13 = findViewById(R.id.rthjoh1co8kr);
-        ImageView image14 = findViewById(R.id.rkzamz0jcus);
 
-        // ShapeableImageView for special shape
-        ShapeableImageView shapedImage = findViewById(R.id.rmh0xikeeod);
+        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/1700ede5-aea7-4e1b-934d-4405ae39eafa").into((ImageView) findViewById(R.id.rmi23iviyo7k));
+        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d16fc04c-0078-4f0e-bd91-9d7d2c5f35a6").into((ImageView) findViewById(R.id.r5p3awsyp9a4));
+        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/75ca2cb5-c780-4b02-b559-60520b458e7b").into((ImageView) findViewById(R.id.r0f7rk3mkiss));
+        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a4a18f74-672f-4729-bbfa-d78bf2b6951a").into((ImageView) findViewById(R.id.ro4fkwpv1pr9));
+        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/bd3aa2ca-be41-4f54-ae99-b128403dcfa6").into((ImageView) findViewById(R.id.r20dtmwwmxcj));
+        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cf141f68-fbb6-4bef-aa98-0a2d7fcd244a").into((ImageView) findViewById(R.id.rthjoh1co8kr));
+        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/fd1b690a-45a2-467d-8bbc-a11b5d461ed1").into((ImageView) findViewById(R.id.rkzamz0jcus));
 
-        // Load images with Glide
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/1700ede5-aea7-4e1b-934d-4405ae39eafa").into(image1);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/475e6676-039c-43ed-939e-a09c17d31ef1").into(image5);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c65cdc8d-f349-41f9-b9ea-637bec018f78").into(image6);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/72f03aa4-096a-44f2-9a69-96bdc574ef81").into(image7);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/887f1692-5889-498d-9e7c-816b67840932").into(image8);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d16fc04c-0078-4f0e-bd91-9d7d2c5f35a6").into(image9);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/75ca2cb5-c780-4b02-b559-60520b458e7b").into(image10);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/a4a18f74-672f-4729-bbfa-d78bf2b6951a").into(image11);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/bd3aa2ca-be41-4f54-ae99-b128403dcfa6").into(image12);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cf141f68-fbb6-4bef-aa98-0a2d7fcd244a").into(image13);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/fd1b690a-45a2-467d-8bbc-a11b5d461ed1").into(image14);
-        Glide.with(this).load("https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/34f2312b-80fd-48d9-9917-7e6658aa7530").into(shapedImage);
+        btnBackWorkOutTracker = findViewById(R.id.btnBackWorkOutTracker);
+        btnBackWorkOutTracker.setOnClickListener(v -> startActivity(new Intent(Work_Tracker.this, home.class)));
 
-        // EditText listener
-        EditText editText1 = findViewById(R.id.rw9u5susurda);
-        editText1.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+        btnCheckWorkOut = findViewById(R.id.btnCheckWorkOut);
+        btnCheckWorkOut.setOnClickListener(v -> startActivity(new Intent(Work_Tracker.this, WorkoutSchedule.class)));
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                editTextValue1 = s.toString();
-            }
+        btnViewMoreFullbody = findViewById(R.id.btnViewMoreFullbody);
+        btnViewMoreFullbody.setOnClickListener(v -> startActivity(new Intent(Work_Tracker.this, WorkoutDetail1.class)));
 
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
+        btnViewMoreLowebody = findViewById(R.id.btnViewMoreLowebody);
+        btnViewMoreLowebody.setOnClickListener(v -> startActivity(new Intent(Work_Tracker.this, WorkoutDetail1.class)));
 
-        // Button click listener
-        View button1 = findViewById(R.id.rycdvuq51ruq);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("Pressed");
-            }
+        btnViewMoreAB = findViewById(R.id.btnViewMoreAB);
+        btnViewMoreAB.setOnClickListener(v -> startActivity(new Intent(Work_Tracker.this, WorkoutDetail1.class)));
+
+        seeMoreText = findViewById(R.id.txtSeeMoreWorkout);
+        workoutContainer = findViewById(R.id.workoutContainer);
+        allWorkouts = loadWorkoutFromSQLite();
+        renderWorkoutList(false);
+
+        seeMoreText.setOnClickListener(v -> {
+            isExpanded = !isExpanded;
+            renderWorkoutList(isExpanded);
+            seeMoreText.setText(isExpanded ? "See less" : "See more");
         });
     }
-    private void setupChart(LineChart chart) {
-        // 1. Dữ liệu Entry
-        List<Entry> entries = new ArrayList<>();
-        for (int i = 0; i < VALUES.length; i++) {
-            entries.add(new Entry(i, VALUES[i]));
-        }
 
-        // 2. DataSet
-        LineDataSet set = new LineDataSet(entries, "");
-        set.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        set.setDrawCircles(false);
-        set.setDrawValues(false);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setupChart((LineChart) findViewById(R.id.lineChart));
+    }
+
+    private void setupChart(LineChart chart) {
+        List<Float> valuesList = getWeeklyCompletionFromDB();
+        List<Entry> entries = new ArrayList<>();
+        for (int i = 0; i < valuesList.size(); i++) entries.add(new Entry(i, valuesList.get(i)));
+
+        LineDataSet set = new LineDataSet(entries, "Completion %");
+        set.setMode(LineDataSet.Mode.LINEAR);
+        set.setDrawCircles(true);
+        set.setDrawCircleHole(true);
+        set.setCircleColor(Color.WHITE);
+        set.setCircleRadius(4f);
         set.setLineWidth(2f);
         set.setColor(Color.WHITE);
         set.setDrawFilled(true);
         set.setFillAlpha(50);
         set.setFillColor(Color.WHITE);
+        set.setDrawValues(true);
+        set.setValueTextColor(Color.WHITE);
+        set.setValueTextSize(12f);
+        set.setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getPointLabel(Entry entry) {
+                return ((int) entry.getY()) + "%";
+            }
+        });
 
-        // 3. Gán dữ liệu
         chart.setData(new LineData(set));
 
-        // 4. X-Axis
         XAxis x = chart.getXAxis();
         x.setPosition(XAxis.XAxisPosition.BOTTOM);
         x.setGranularity(1f);
@@ -119,45 +118,110 @@ public class Work_Tracker extends AppCompatActivity {
         x.setTextSize(14f);
         x.setDrawGridLines(false);
 
-        // 1. Trục trái: chỉ vẽ grid, không hiển thị giá trị
         YAxis left = chart.getAxisLeft();
-        left.setDrawLabels(false);      // ẩn nhãn số
-        left.setDrawAxisLine(false);    // ẩn đường trục
-        left.setDrawGridLines(false);    // vẫn vẽ grid ngang
-
-        // 2. Trục phải: hiển thị % nguyên
-        YAxis right = chart.getAxisRight();
-        right.setEnabled(true);
-        right.setDrawGridLines(true);
-        right.setGridColor(Color.WHITE);  // đặt màu trắng cho grid
-        right.setGridLineWidth(0.5f);       // độ dày tuỳ ý
-        right.setAxisMinimum(0f);
-        right.setAxisMaximum(100f);
-        right.setGranularity(20f);
-        right.setLabelCount(6, true);
-        right.setTextColor(Color.WHITE);
-        right.setTextSize(14f);
-
-        // Formatter ép in nguyên kèm ký tự “%”
-        right.setValueFormatter(new ValueFormatter() {
+        left.setEnabled(true);
+        left.setDrawGridLines(true);
+        left.setGridColor(Color.WHITE);
+        left.setGridLineWidth(0.5f);
+        left.setAxisMinimum(0f);
+        left.setAxisMaximum(100f);
+        left.setGranularity(20f);
+        left.setLabelCount(6, true);
+        left.setTextColor(Color.WHITE);
+        left.setTextSize(14f);
+        left.setValueFormatter(new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
-                if (value == 0f) {
-                    return "";
-                }
-                return ((int) value) + "%";
+                return value == 0f ? "" : ((int) value) + "%";
             }
         });
 
-        // 6. MarkerView (tooltip)
-        LineMarkerView mv = new LineMarkerView(this, DAYS, VALUES);
-        chart.setMarker(mv);
-
-        // 7. Tối ưu hiển thị
+        chart.getAxisRight().setEnabled(false);
         chart.getDescription().setEnabled(false);
         chart.getLegend().setEnabled(false);
         chart.setTouchEnabled(true);
         chart.animateX(800);
         chart.invalidate();
+    }
+
+    private List<Float> getWeeklyCompletionFromDB() {
+        List<Float> result = new ArrayList<>();
+        WorkOutTaskDBHelper dbHelper = new WorkOutTaskDBHelper(this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        java.util.Calendar calendar = java.util.Calendar.getInstance();
+        calendar.set(java.util.Calendar.DAY_OF_WEEK, java.util.Calendar.SUNDAY);
+
+        for (int i = 0; i < 7; i++) {
+            String dateStr = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(calendar.getTime());
+            Cursor cursor = db.rawQuery("SELECT SUM(is_done)*100.0/COUNT(*) AS percent_done FROM workout_schedule WHERE date = ?", new String[]{dateStr});
+            float percent = 0f;
+            if (cursor.moveToFirst() && !cursor.isNull(0)) percent = cursor.getFloat(0);
+            result.add(percent);
+            cursor.close();
+            calendar.add(java.util.Calendar.DAY_OF_WEEK, 1);
+        }
+
+        db.close();
+        return result;
+    }
+
+    private void renderWorkoutList(boolean showAll) {
+        workoutContainer.removeAllViews();
+        LayoutInflater inflater = LayoutInflater.from(this);
+        int count = showAll ? allWorkouts.size() : Math.min(2, allWorkouts.size());
+
+        for (int i = 0; i < count; i++) {
+            WorkoutItem item = allWorkouts.get(i);
+            View workoutView = inflater.inflate(R.layout.item_upcoming_workout, workoutContainer, false);
+            TextView title = workoutView.findViewById(R.id.textTitle);
+            TextView time = workoutView.findViewById(R.id.textTime);
+            ImageView icon = workoutView.findViewById(R.id.imgIcon);
+            title.setText(item.getTitle());
+            time.setText(item.getTime());
+            icon.setImageResource(item.getImageResId());
+            workoutContainer.addView(workoutView);
+        }
+    }
+
+    private List<WorkoutItem> loadWorkoutFromSQLite() {
+        List<WorkoutItem> list = new ArrayList<>();
+        WorkOutTaskDBHelper dbHelper = new WorkOutTaskDBHelper(this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(
+                "SELECT title, date, time FROM workout_schedule WHERE is_done = 0 ORDER BY date ASC, time ASC", null);
+
+        while (cursor.moveToNext()) {
+            String title = cursor.getString(cursor.getColumnIndex("title"));
+            String date = cursor.getString(cursor.getColumnIndex("date"));
+            String time = cursor.getString(cursor.getColumnIndex("time"));
+
+            String timeStr = date + ", " + time;
+
+            // Ánh xạ tiêu đề sang icon
+            int iconResId;
+            switch (title.toLowerCase()) {
+                case "fullbody workout":
+                    iconResId = R.drawable.ic_fullbody;
+                    break;
+                case "upperbody workout":
+                    iconResId = R.drawable.ic_yoga;
+                    break;
+                case "lowebody workout":
+                    iconResId = R.drawable.ic_lowebody;
+                    break;
+                case "ab workout":
+                    iconResId = R.drawable.ic_ab;
+                    break;
+                default:
+                    iconResId = R.mipmap.ic_launcher;
+            }
+
+            list.add(new WorkoutItem(title, timeStr, iconResId));
+        }
+
+        cursor.close();
+        db.close();
+        return list;
     }
 }

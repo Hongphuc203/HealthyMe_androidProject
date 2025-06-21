@@ -7,6 +7,20 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:weightSum="6">
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="10dp">
+
+		<Button
+			android:id="@+id/btnToCompare"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Compare"
+			android:layout_gravity="end"
+			android:background="@drawable/cr16lr495c050f6eea4ce"
+			android:textColor="#FFFFFF"/>
+	</FrameLayout>
 			<FrameLayout
 				android:id="@+id/ImageTake"
 				android:layout_width="match_parent"
@@ -87,7 +101,7 @@
 			android:background="@drawable/retangcle58">
 
 			<ImageView
-				android:id="@+id/r28lo4u3fyxpj"
+				android:id="@+id/ImagOfFront"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_margin="25dp"
@@ -105,7 +119,7 @@
 			android:background="@drawable/retangcle58">
 
 			<ImageView
-				android:id="@+id/rb2wawm0zecw"
+				android:id="@+id/ImagOfLeft"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_margin="25dp"
@@ -124,7 +138,7 @@
 			android:background="@drawable/retangcle58">
 
 			<ImageView
-				android:id="@+id/r7lb5e91w2qw"
+				android:id="@+id/ImagOfBack"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_margin="25dp"
@@ -142,7 +156,7 @@
 			android:background="@drawable/retangcle58">
 
 			<ImageView
-				android:id="@+id/rqch9rq3aays"
+				android:id="@+id/ImagOfRight"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				android:layout_margin="25dp"
